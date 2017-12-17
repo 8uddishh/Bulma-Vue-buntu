@@ -1,0 +1,33 @@
+$navbar-height: 1.8rem;
+$navbar-background-color: rgba(58, 56, 56, 0.5);
+$navbar-vertical-background-color: rgba(33, 31, 31, 0.3);
+$navbar-alt-vertical-background-color: rgba(104, 101, 101, 0.6);
+
+$launcher-overlay: rgba(78, 40, 28, 0.45);
+$alt-color: #eaeaea;
+$forecolor-1: #dacbd9;
+
+$ubuntu-dark-border: #5a585a;
+$ubuntu-light-border: #ccccc7;
+$ubuntu-orange: #E95420;
+$ubuntu-cool-grey: #4a4a48;
+$ubuntu-warm-grey: #e4e4e2;
+$ubuntu-white: #FEFEFF;
+$ubuntu-warmer-grey: #f9faf9;
+$ubuntu-text-color: #363636;
+
+@import "~bulma";
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome.scss";
+
+$background-image: '~/src/assets/ubuntu-original-2016-hd-3840x2160.jpg';
+
+body {
+    font-family: 'Ubuntu', sans-serif !important;
+    background-image: url($background-image);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
