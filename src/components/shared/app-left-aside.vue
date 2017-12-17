@@ -47,6 +47,7 @@ export default {
         top: 35px;
         bottom: 0px;
         background-color: $navbar-vertical-background-color;
+        z-index: 101;
 
         li:first-of-type {
             margin-top: 5px;
