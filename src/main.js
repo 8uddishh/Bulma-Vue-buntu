@@ -8,6 +8,9 @@ require('./assets/scss/bulmabuntu.scss')
 
 Vue.config.productionTip = false
 
+// event buses
+export const bus = new Vue()
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

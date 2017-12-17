@@ -10,16 +10,29 @@
 
         <aside class="menu bottom-top">
             <ul class="menu-list">
-              <li><a title="Applications Launch"><i class="fa fa-th"></i></a></li>
+              <li><a title="Applications Launch" v-on:click.prevent="showApplicationLauncher()"><i class="fa fa-th"></i></a></li>
             </ul>
           </aside>
     </div> 
 </template>
 
 <script>
+import { bus } from './../../main'
+
 export default {
     props: {
         asidelinks: Array
+    },
+    data () {
+        return {
+            launchapp: false
+        }
+    },
+    methods: {
+        showApplicationLauncher: function () {
+            this.launchapp = !this.launchapp
+            bus.$emit('launch-app', this.launchapp)
+        }
     }
 }
 </script>
@@ -63,7 +76,6 @@ export default {
                     border: 1px solid lighten($anchor-hover-color, 0.5);
                 }
             }
-            
         }
     }
 </style>
