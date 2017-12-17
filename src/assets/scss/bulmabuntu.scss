@@ -1,20 +1,19 @@
 $navbar-height: 1.8rem;
 $navbar-background-color: rgba(58, 56, 56, 0.5);
-$navbar-vertical-background-color: rgba(33, 31, 31, 0.3);
 $navbar-alt-vertical-background-color: rgba(104, 101, 101, 0.6);
-
-$launcher-overlay: rgba(78, 40, 28, 0.45);
 $alt-color: #eaeaea;
 $forecolor-1: #dacbd9;
 
-$ubuntu-dark-border: #5a585a;
-$ubuntu-light-border: #ccccc7;
-$ubuntu-orange: #E95420;
-$ubuntu-cool-grey: #4a4a48;
-$ubuntu-warm-grey: #e4e4e2;
-$ubuntu-white: #FEFEFF;
-$ubuntu-warmer-grey: #f9faf9;
-$ubuntu-text-color: #363636;
+// $launcher-overlay: rgba(78, 40, 28, 0.45);
+
+// $ubuntu-dark-border: #5a585a;
+// $ubuntu-light-border: #ccccc7;
+// $ubuntu-orange: #E95420;
+// $ubuntu-cool-grey: #4a4a48;
+// $ubuntu-warm-grey: #e4e4e2;
+// $ubuntu-white: #FEFEFF;
+// $ubuntu-warmer-grey: #f9faf9;
+// $ubuntu-text-color: #363636;
 
 @import "~bulma";
 $fa-font-path: "~font-awesome/fonts";
@@ -29,5 +28,196 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    position:absolute; 
+    top: 0px; 
+    left: 0px; 
+    right: 0px; 
+    bottom: 0px;
+
+
+    a.icon {
+        transition: all 1s ease;
+        border: 1px solid transparent;
+        &.icon-sm {
+            margin-bottom: 3px;
+            min-height: 50px;
+            min-width: 55px;
+            padding: 4px 6px;
+            span{
+                display: inline-block;
+                min-height: 42px;
+                min-width: 42px;
+                background-size: 40px 40px;
+                background-repeat: no-repeat;
+            }
+        }
+
+        &.icon-bg {
+            //margin-bottom: px;
+            min-height:120px;
+            min-width: 120px;
+            //padding: 10px 15px;
+            span{
+                display: inline-block;
+                min-height: 80px;
+                min-width: 80px;
+                background-size: 80px 80px;
+                background-repeat: no-repeat;
+                margin-bottom: 20px;
+
+                &:after {
+                    position: relative;
+                    bottom: -85;
+                    color: $forecolor-1;
+                    font-weight: bold;
+                    font-size: 0.85rem;
+                    
+                }
+                &.icon-search:after {
+                    content: 'Search';
+                    left: 15;
+                }
+                &.icon-books:after {
+                    content: 'Books';
+                    left: 25;
+                }
+                &.icon-movies:after {
+                    content: 'Movies';
+                    left: 20;
+                }
+                &.icon-music:after {
+                    content: 'Music';
+                    left: 23;
+                }
+                &.icon-games:after {
+                    content: 'Games';
+                    left: 25;
+                }
+                &.icon-memberships:after {
+                    content: 'Memberships';
+                    left: 5;
+                }
+                &.icon-orders:after {
+                    content: 'Orders';
+                    left: 20;
+                }
+                &.icon-shipments:after {
+                    content: 'Shipments';
+                    left: 10;
+                }
+                &.icon-users:after {
+                    content: 'Users';
+                    left: 22;
+                }
+                &.icon-roles:after {
+                    content: 'Roles';
+                    left: 22;
+                }
+                &.icon-settings:after {
+                    content: 'Settings';
+                    left: 15;
+                }
+                &.icon-admin:after {
+                    content: 'Site Admin';
+                    left: 5;
+                }
+                &.icon-bookmark:after {
+                    content: 'Bookmarks';
+                    left: 5;
+                }
+                &.icon-history:after {
+                    content: 'History';
+                    left: 15;
+                }
+                &.icon-watchlist:after {
+                    content: 'Watchlist';
+                    left: 10;
+                }
+                &.icon-market:after {
+                    content: 'Market';
+                    left: 20;
+                }
+                &.icon-cases:after {
+                    content: 'Cases';
+                    left: 25;
+                }
+                &.icon-help:after {
+                    content: 'Help';
+                    left: 25;
+                }
+            }
+        }
+
+        span.icon-search {
+            background-image: url('../icons/search-128.png');
+        }
+        span.icon-books {
+            background-image: url('../icons/booklet-128.png');
+        }
+
+        span.icon-movies {
+            background-image: url('../icons/video-128.png');
+        }
+
+        span.icon-music {
+            background-image: url('../icons/music-128.png');
+        }
+
+        span.icon-games {
+            background-image: url('../icons/game-128.png');
+        }
+
+        span.icon-memberships {
+            background-image: url('../icons/membership-128.png');
+        }
+
+        span.icon-orders {
+            background-image: url('../icons/invoice-128.png');
+        }
+
+        span.icon-shipments {
+            background-image: url('../icons/delivery-128.png');
+        }
+
+        span.icon-users {
+            background-image: url('../icons/user-128.png');
+        }
+
+        span.icon-roles {
+            background-image: url('../icons/role-128.png');
+        }
+
+        span.icon-settings {
+            background-image: url('../icons/tools-128.png');
+        }
+
+        span.icon-admin {
+            background-image: url('../icons/globe-gear-128.png');
+        }
+
+        span.icon-bookmark {
+            background-image: url('../icons/bookmark-128.png');
+        }
+
+        span.icon-history {
+            background-image: url('../icons/history-128.png');
+        }
+
+        span.icon-watchlist {
+            background-image: url('../icons/watchlist-128.png');
+        }
+
+        span.icon-market {
+            background-image: url('../icons/market-128.png');
+        }
+
+        span.icon-cases {
+            background-image: url('../icons/cases-128.png');
+        }
+
+        span.icon-help {
+            background-image: url('../icons/help-128.png');
+        }
+    }
 }
 
