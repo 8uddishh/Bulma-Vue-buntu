@@ -1,22 +1,24 @@
 <template>
-    <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item"><i :class="appicon"></i> &nbsp;{{apptitle}}</a>
-        </div>
-        <div class="navbar-end">
-            <div class="navbar-item">
-                <div class="field is-grouped">
-                    <p class="control" v-for="link in applinks">
-                      <a class="button">
-                        <span class="icon is-small">
-                            <i :class="link.class"></i>
-                          </span>
-                      </a>
-                    </p>
+    <div class="nav-background">
+        <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item"><i :class="appicon"></i> &nbsp;{{apptitle}}</a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="field is-grouped">
+                        <p class="control" v-for="link in applinks">
+                        <a class="button">
+                            <span class="icon is-small">
+                                <i :class="link.class"></i>
+                            </span>
+                        </a>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 </template>
 
 <script>
@@ -31,6 +33,20 @@ export default {
 
 <style lang="scss" scoped>
     $alt-color: #eaeaea;
+    $background-image: '~/src/assets/ubuntu-original-2016-hd-3840x2160.jpg';
+
+    .nav-background {
+        background-image: url($background-image);
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        width: 100%;
+        height: 35px;
+        position: fixed;
+        z-index: 100;
+        top: 0px;
+    }
 
     nav {
         color: $alt-color;

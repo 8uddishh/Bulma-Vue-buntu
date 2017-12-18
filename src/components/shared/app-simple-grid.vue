@@ -118,7 +118,7 @@ export default {
                 border: solid 1px $ubuntu-dark-border;
                 border-top-left-radius: 5px;
                 border-top-right-radius: 5px;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.45), 0 1px 3px rgba(0,0,0,0.45);
+                //box-shadow: 0 1px 3px rgba(0,0,0,0.45), 0 1px 3px rgba(0,0,0,0.45);
             }
         }
 
