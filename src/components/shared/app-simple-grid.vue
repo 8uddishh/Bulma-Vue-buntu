@@ -118,7 +118,6 @@ export default {
                 border: solid 1px $ubuntu-dark-border;
                 border-top-left-radius: 5px;
                 border-top-right-radius: 5px;
-                //box-shadow: 0 1px 3px rgba(0,0,0,0.45), 0 1px 3px rgba(0,0,0,0.45);
             }
         }
 
@@ -150,9 +149,17 @@ export default {
                         height: 20px;
                         width: 20px;
                         font-size: 0.8rem;
-                        border: 1px solid $ubuntu-orange;
+                        border: 1px solid $ubuntu-cool-grey;
                         background-color: $ubuntu-orange;
                         cursor: pointer;
+
+                        .fa {
+                            &:before {
+                                position: absolute;
+                                top: 0.75rem;
+                                right: 1rem;
+                            }
+                        }
 
                         &:hover {
                             border: 1px solid $ubuntu-warm-grey;

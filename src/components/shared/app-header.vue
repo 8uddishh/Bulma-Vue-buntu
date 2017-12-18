@@ -44,7 +44,7 @@ export default {
         width: 100%;
         height: 35px;
         position: fixed;
-        z-index: 100;
+        z-index: 101;
         top: 0px;
     }
 
@@ -54,7 +54,7 @@ export default {
         padding: 3px;
         position: fixed;
         top: 0px;
-        z-index: 101;
+        z-index: 102;
         width: 100%;
         
         .navbar-end {
