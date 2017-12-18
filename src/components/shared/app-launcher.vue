@@ -1,5 +1,5 @@
 <template>
-    <div class="app-launcher-panel" v-bind:class="{ 'close': !launchapp }">
+    <div class="app-launcher-panel" :class="{ 'close': !launchapp }">
         <div class="app-launch-inner">
             <div class="container is-fluid">
                 <div class="columns">
@@ -16,8 +16,8 @@
                     <div class="column is-two-thirds">
                         <ul class="appmenus">
                             <li v-for="applink in applinks">
-                                <a v-bind:title="applink.title" class="icon icon-bg">
-                                    <span v-bind:class="applink.class"></span>
+                                <a :title="applink.title" class="icon icon-bg">
+                                    <span :class="applink.class"></span>
                                 </a>
                             </li>
                         </ul>

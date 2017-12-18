@@ -2,15 +2,17 @@
     <div class="vertical-menu">
         <aside class="menu">
             <ul class="menu-list">
-                <li v-for="link in asidelinks">
-                    <a v-bind:title="link.title" class="icon icon-sm"><span v-bind:class="link.class"></span></a>
-                </li>
+                <router-link tag="li" v-for="link in asidelinks" :key="link.href" :to="link.href">
+                    <a :title="link.title" class="icon icon-sm">
+                        <span :class="link.class"></span>
+                    </a>
+                </router-link>
             </ul>
         </aside>
 
         <aside class="menu bottom-top">
             <ul class="menu-list">
-              <li><a title="Applications Launch" v-on:click.prevent="showApplicationLauncher()"><i class="fa fa-th"></i></a></li>
+              <li><a title="Applications Launch" @click.prevent="showApplicationLauncher()"><i class="fa fa-th"></i></a></li>
             </ul>
           </aside>
     </div> 

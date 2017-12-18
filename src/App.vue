@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <app-header v-bind:apptitle="title" v-bind:appicon="icon" v-bind:applinks="links"></app-header>
-    <app-left-aside v-bind:asidelinks="asidelinks"></app-left-aside>
+    <app-header :apptitle="title" :appicon="icon" :applinks="links"></app-header>
+    <app-left-aside :asidelinks="asidelinks"></app-left-aside>
     <div class="container ubuntu-container">
       <router-view/>
     </div>
-    <app-launcher v-bind:applinks="applinks"></app-launcher>
+    <app-launcher :applinks="applinks"></app-launcher>
   </div>
 </template>
 
@@ -34,10 +34,10 @@ export default {
           { title: 'Log Off', class: 'fa fa-power-off' }
         ],
         asidelinks: [
-          { title: 'Search', class: 'icon-search' },
-          { title: 'Books', class: 'icon-books' },
-          { title: 'Movies', class: 'icon-movies' },
-          { title: 'Music', class: 'icon-music' }
+          { title: 'Search', class: 'icon-search', href: 'search' },
+          { title: 'Books', class: 'icon-books', href: 'books' },
+          { title: 'Movies', class: 'icon-movies', href: 'movies' },
+          { title: 'Music', class: 'icon-music', href: 'music' }
         ],
         applinks: [
           { title: 'Search', class: 'icon-search' },
@@ -66,10 +66,12 @@ export default {
 
 <style lang="scss" scoped>
   .ubuntu-container {
-        margin: 0px 0px 0px 55px;
+        margin: 0px;
         height: 100%;
         max-width: 3000px;
         width: 100%;
         padding: 0px;
+        background-color: transparent;
+        padding: 0px 0px 0px 55px;
   }
 </style>

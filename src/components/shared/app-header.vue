@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item"><i v-bind:class="appicon"></i> &nbsp;{{apptitle}}</a>
+            <a class="navbar-item"><i :class="appicon"></i> &nbsp;{{apptitle}}</a>
         </div>
         <div class="navbar-end">
             <div class="navbar-item">
@@ -9,7 +9,7 @@
                     <p class="control" v-for="link in applinks">
                       <a class="button">
                         <span class="icon is-small">
-                            <i v-bind:class="link.class"></i>
+                            <i :class="link.class"></i>
                           </span>
                       </a>
                     </p>

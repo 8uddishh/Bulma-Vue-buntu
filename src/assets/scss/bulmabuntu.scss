@@ -3,6 +3,9 @@ $navbar-background-color: rgba(58, 56, 56, 0.5);
 $navbar-alt-vertical-background-color: rgba(104, 101, 101, 0.6);
 $alt-color: #eaeaea;
 $forecolor-1: #dacbd9;
+$ubuntu-text-color: #363636;
+$ubuntu-warmer-grey: #f9faf9;
+$ubuntu-orange: #E95420;
 
 @import "~bulma";
 $fa-font-path: "~font-awesome/fonts";
@@ -23,6 +26,20 @@ body {
     right: 0px; 
     bottom: 0px;
 
+    .button {
+        font-size: 0.85rem;
+        font-weight: bold;
+
+        &.is-link {
+            color: $ubuntu-text-color;
+            background-color: $ubuntu-warmer-grey;
+            border: 1px solid $ubuntu-orange;
+            font-weight: normal;
+        }
+    }
+    .is-search-action {
+        justify-content: flex-end !important;
+    }
 
     a.icon {
         transition: all 1s ease;
