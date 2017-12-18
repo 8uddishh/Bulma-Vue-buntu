@@ -36,7 +36,10 @@ export default {
         color: $alt-color;
         font-weight: bold;
         padding: 3px;
+        position: fixed;
+        top: 0px;
         z-index: 101;
+        width: 100%;
         
         .navbar-end {
             .button {

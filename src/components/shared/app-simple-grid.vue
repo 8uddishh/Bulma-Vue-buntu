@@ -1,6 +1,6 @@
 <template>
-    <div class="container ubuntu-grid-container">
-        <div class="card ubuntu-card">
+    <div class="container ubuntu-grid-container box-effect-1">
+        <div class="card ubuntu-card header-card">
             <header class="card-header">
                 <div class="card-header-title">
                     <slot name="grid-title">
@@ -12,6 +12,8 @@
                     </button>
                 </div>
             </header>
+        </div>
+        <div class="card ubuntu-card">
             <div class="card-content">
                 <div class="content">
                     <div class="columns view-outlet">
@@ -57,22 +59,75 @@ export default {
     $ubuntu-cool-grey: #4a4a48;
     $ubuntu-orange: #E95420;
     $ubuntu-warm-grey: #e4e4e2;
-    $ubuntu-white: #FEFEFF;
+    $ubuntu-white: #f2f2f0;
     $ubuntu-light-border: #ccccc7;
     $white: #fff;
 
+    .box-effect-1
+    {
+        position:relative;
+        -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    }
+    .box-effect-1:before, .box-effect-1:after
+    {
+        content:"";
+        position:absolute;
+        z-index:-1;
+        -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+        -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+        box-shadow:0 0 20px rgba(0,0,0,0.8);
+        top:10px;
+        bottom:10px;
+        left:0;
+        right:0;
+        -moz-border-radius:100px / 10px;
+        border-radius:100px / 10px;
+    }
+
+    .box-effect-1:after
+    {
+        right:10px;
+        left:auto;
+        -webkit-transform:skew(8deg) rotate(3deg);
+        -moz-transform:skew(8deg) rotate(3deg);
+            -ms-transform:skew(8deg) rotate(3deg);
+            -o-transform:skew(8deg) rotate(3deg);
+                transform:skew(8deg) rotate(3deg);
+    }
+
     .ubuntu-grid-container {
-        margin: 0px;
+        margin: 35px 0px 0px 0px;
         width: 100%;
         max-width: 2000px;
+
+        .header-card {
+            z-index: 100;
+            position: fixed;
+            margin-top: 0px !important;
+            top: 35px;
+            left: 0px;
+            right: 1px;
+            border: 0 !important;
+            background-color: transparent;
+            padding-left: 56px;
+            box-shadow: none;
+
+            .card-header {
+                border: solid 1px $ubuntu-dark-border;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.45), 0 1px 3px rgba(0,0,0,0.45);
+            }
+        }
 
         .ubuntu-card {
             border: solid 1px $ubuntu-dark-border;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
-            margin-left: 2px;
-            margin-right: 2px;
-            box-shadow: 0 1px 5px rgba(0,0,0,0.45), 0 1px 5px rgba(0,0,0,0.45);
+
+            margin-top: 35px;
             transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 
             .card-header {
@@ -109,6 +164,7 @@ export default {
             .card-content {
                 padding: 0;
                 background-color: $ubuntu-white;
+                margin-top: 30px;
 
                 .view-outlet {
                     height: 100%;
@@ -116,14 +172,20 @@ export default {
                     padding-right: 12px;
                     padding-left: 10px;
                     .play-panel {
-                        overflow-y: scroll;
+                        min-height: 1200px;
                         .table {
                             font-size: 0.85rem;
                         }
                     }
                     .control-panel {
                         background-color: $ubuntu-warm-grey;
-                        border-left: solid 2px $ubuntu-light-border;
+                        border-left: solid 1px $ubuntu-light-border;
+                        border-right: solid 1px $ubuntu-light-border;
+                        width: 20%; 
+                        position: fixed; 
+                        top: 68px; 
+                        right: 0px; 
+                        bottom: 0px;
 
                         .field {
                             margin-bottom: 8px;

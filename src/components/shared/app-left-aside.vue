@@ -45,7 +45,7 @@ export default {
     $anchor-hover-color: rgba(104, 101, 101, 0.6);
 
     .vertical-menu {
-        position: absolute;
+        position: fixed;
         top: 35px;
         bottom: 0px;
         background-color: $navbar-vertical-background-color;
