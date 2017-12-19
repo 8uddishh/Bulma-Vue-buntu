@@ -178,7 +178,7 @@ export default {
                     padding-right: 12px;
                     padding-left: 10px;
                     .play-panel {
-                        min-height: 1000px;
+                        min-height: 900px;
                         .table {
                             font-size: 0.85rem;
                         }

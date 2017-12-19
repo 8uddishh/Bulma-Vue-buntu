@@ -11,6 +11,11 @@ Vue.config.productionTip = false
 // event buses
 export const bus = new Vue()
 
+// filters
+Vue.filter('currency', function (value) {
+  return `$${parseFloat(value).toFixed(2)}`
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -1,7 +1,23 @@
 <template>
     <app-simple-grid>
         <h3 slot="grid-title">Movies</h3>
-        <bvu-table slot="grid-table" v-bind:headers="headers" v-bind:identifier="'id'" v-bind:rows="movies"></bvu-table>
+        <bvu-table slot="grid-table" v-bind:headers="headers">
+            <bvu-table-row slot="body" v-for="movie in movies" v-bind:key="movie['id']" v-bind:rowdata="movie">
+                <bvu-table-cell slot="name">
+                    <a v-bind:href="`/movies/${movie.id}`" v-bind:title="movie.name">
+                        {{movie.name}}
+                    </a>
+                </bvu-table-cell>
+                <bvu-table-cell slot="qtyAvailable">
+                    <span v-if="movie.qtyAvailable < 5" class="tag is-danger">{{movie.qtyAvailable}}</span>
+                    <span v-else-if="movie.qtyAvailable < 10" class="tag is-warning">{{movie.qtyAvailable}}</span>
+                    <span v-else class="tag is-success">{{movie.qtyAvailable}}</span>
+                </bvu-table-cell>
+                <bvu-table-cell slot="cost">
+                    {{movie.cost | currency}}
+                </bvu-table-cell>
+            </bvu-table-row>
+        </bvu-table>
         <form slot="grid-control-panel">
             <div class="field">
                 <div class="control">
@@ -44,11 +60,15 @@
 
 import appSimpleGrid from './../shared/app-simple-grid.vue'
 import bvuTable from './../bulma/table/table.vue'
+import bvuTableRow from './../bulma/table/table-row.vue'
+import bvuTableCell from './../bulma/table/table-cell.vue'
 
 export default {
     components: {
         'app-simple-grid': appSimpleGrid,
-        'bvu-table': bvuTable
+        'bvu-table': bvuTable,
+        'bvu-table-row': bvuTableRow,
+        'bvu-table-cell': bvuTableCell
     },
     data () {
         return {
