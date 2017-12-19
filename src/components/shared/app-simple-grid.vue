@@ -59,7 +59,7 @@ export default {
     $ubuntu-cool-grey: #4a4a48;
     $ubuntu-orange: #E95420;
     $ubuntu-warm-grey: #e4e4e2;
-    $ubuntu-white: #f2f2f0;
+    $ubuntu-white: #FEFEFF;
     $ubuntu-light-border: #ccccc7;
     $white: #fff;
 
@@ -125,7 +125,6 @@ export default {
             border: solid 1px $ubuntu-dark-border;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
-
             margin-top: 35px;
             transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 
@@ -179,7 +178,7 @@ export default {
                     padding-right: 12px;
                     padding-left: 10px;
                     .play-panel {
-                        min-height: 1200px;
+                        min-height: 1000px;
                         .table {
                             font-size: 0.85rem;
                         }

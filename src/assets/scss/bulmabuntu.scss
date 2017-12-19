@@ -6,6 +6,7 @@ $forecolor-1: #dacbd9;
 $ubuntu-text-color: #363636;
 $ubuntu-warmer-grey: #f9faf9;
 $ubuntu-orange: #E95420;
+$ubuntu-light-border: #ccccc7;
 
 @import "~bulma";
 $fa-font-path: "~font-awesome/fonts";
@@ -25,6 +26,10 @@ body {
     left: 0px; 
     right: 0px; 
     bottom: 0px;
+
+    hr {
+        background-color: $ubuntu-light-border; height: 1px; border: 0;
+    }
 
     .button {
         font-size: 0.85rem;
