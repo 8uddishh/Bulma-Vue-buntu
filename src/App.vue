@@ -3,7 +3,9 @@
     <app-header :apptitle="title" :appicon="icon" :applinks="links"></app-header>
     <app-left-aside :asidelinks="asidelinks"></app-left-aside>
     <div class="container ubuntu-container">
-      <router-view/>
+      <transition name="fade" mode="out-in">
+        <router-view class="view"></router-view>
+      </transition>
     </div>
     <app-launcher :applinks="applinks"></app-launcher>
   </div>

@@ -61,6 +61,8 @@ export default {
     $ubuntu-warm-grey: #e4e4e2;
     $ubuntu-white: #FEFEFF;
     $ubuntu-light-border: #ccccc7;
+    $ubuntu-text-color: #363636;
+
     $white: #fff;
 
     .box-effect-1
@@ -200,6 +202,9 @@ export default {
                             }
                             input {
                                 font-size: 0.85rem;
+                                &::-webkit-input-placeholder {
+                                    color: $ubuntu-text-color;
+                                }
                             }
                             .select {
                                 width: 100%;

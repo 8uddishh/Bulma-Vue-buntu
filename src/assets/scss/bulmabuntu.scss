@@ -31,6 +31,31 @@ body {
         background-color: $ubuntu-light-border; height: 1px; border: 0;
     }
 
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s ease;
+    }
+    
+    .fade-enter, .fade-leave-active {
+        opacity: 0
+    }
+    
+    .child-view {
+        position: absolute;
+        transition: all .5s cubic-bezier(.55,0,.1,1);
+    }
+    
+    .slide-left-enter, .slide-right-leave-active {
+        opacity: 0;
+        -webkit-transform: translate(30px, 0);
+        transform: translate(30px, 0);
+    }
+    
+    .slide-left-leave-active, .slide-right-enter {
+        opacity: 0;
+        -webkit-transform: translate(-30px, 0);
+        transform: translate(-30px, 0);
+    }
+
     .button {
         font-size: 0.85rem;
         font-weight: bold;
