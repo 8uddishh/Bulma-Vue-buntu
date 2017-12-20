@@ -4,7 +4,19 @@
       <template slot="left-links">
         <p class="control">
           <bvu-popover :icon="'fa fa-bell'">
+            <bvu-popover-content slot="popover-content">
+              <template slot>
+                <div id="notifications-pop-over" class="columns">
+                  <div class="column">
+                  </div>
+                  <div class="column is-two-fifths">
+                    <bvu-calendar></bvu-calendar>
+                  </div>
+                </div>
+              </template>
+            </bvu-popover-content>
           </bvu-popover>
+
           <bvu-popover :icon="'fa fa-power-off'">
             <bvu-popover-content slot="popover-content">
               <template slot>
@@ -53,6 +65,7 @@
 <script>
 import popover from './components/bulma/popover/popover.vue'
 import popoverContent from './components/bulma/popover/popover-content.vue'
+import calendar from './components/bulma/calendar/calendar.vue'
 
 import appHeader from './components/shared/app-header.vue'
 import appLeftAside from './components/shared/app-left-aside.vue'
@@ -63,6 +76,7 @@ export default {
   components: {
     'bvu-popover': popover,
     'bvu-popover-content': popoverContent,
+    'bvu-calendar': calendar,
     'app-header': appHeader,
     'app-left-aside': appLeftAside,
     'app-launcher': appLauncher
@@ -215,5 +229,8 @@ export default {
         border-radius: 50%;
       }
     }
+  }
+  #notifications-pop-over {
+    min-width: 600px;
   }
 </style>
