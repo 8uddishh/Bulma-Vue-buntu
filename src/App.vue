@@ -3,16 +3,25 @@
     <app-header :apptitle="title" :appicon="icon">
       <template slot="left-links">
         <p class="control">
+          <bvu-popover :icon="'fa fa-bell'">
+          </bvu-popover>
           <bvu-popover :icon="'fa fa-power-off'">
             <bvu-popover-content slot="popover-content">
               <template slot>
                 <div id="user-pop-over" class="columns">
-                  <div class="column is-one-third">
-                    <img :src="userInfo.avatar" />
+                  <div class="column is-one-third avatar">
+                    <ul>
+                      <li><img :src="userInfo.avatar" /></li>
+                      <li><a class="button is-link is-block">Change</a></li>
+                    </ul>
+                    
                   </div>
                   <div class="column">
                     <ul>
                       <li><a class="button is-link"><i class="fa fa-user"></i> {{userInfo.name}}</a></li>
+                      <li><a class="button is-link"><i class="fa fa-key fa-rotate-180"></i> Manage credentials</a></li>
+                      <li><a class="button is-link"><i class="fa fa-tasks"></i> Manage activities</a></li>
+                      <li><a class="button is-link"><i class="fa fa-cogs"></i> Manage widgets</a></li>
                       <li><a class="button is-link"><i class="fa fa-globe"></i> {{userInfo.language}}</a></li>
                       <li><a class="button is-link"><i class="fa fa-clock-o"></i> {{userInfo.timezone}}</a></li>
                     </ul>
@@ -122,7 +131,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  $ubuntu-text-color: #f1eeeb;
+  $ubuntu-text-color: #eaeaea;
   $popup-border: #413e3b;
   $ubuntu-settings-hover: #3a3838;
 
@@ -193,12 +202,18 @@ export default {
   #user-pop-over {
     min-width: 300px;
 
-    img {
-      height: 75px;
-      width: 75px;
-      max-width: none;
-      max-height: none;
-      border-radius: 50%;
+    .avatar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      img {
+        height: 75px;
+        width: 75px;
+        max-width: none;
+        max-height: none;
+        border-radius: 50%;
+      }
     }
   }
 </style>
