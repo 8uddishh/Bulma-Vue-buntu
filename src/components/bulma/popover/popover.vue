@@ -42,6 +42,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    $ubuntu-cool-grey: #4a4a48;
+    $popup-border: #413e3b;
+
     .popover-wrapper {
         position: relative;
         display: inline-block;
@@ -50,22 +53,24 @@ export default {
             opacity: 0;
             visibility: hidden;
             position: absolute;
-            left: -150px;
+            right: -10px;
+            top: 50px;
             transform: translate(0,10px);
-            background-color: #BFBFBF;
+            background-color: $ubuntu-cool-grey;
             padding: 1.5rem;
-            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+            box-shadow: 0 2px 5px 0 $popup-border;
             width: auto;
+            padding: 10px;
 
             &:before {
                 position: absolute;
                 z-index: -1;
                 content: '';
-                right: calc(50% - 10px);
+                right: 10px;
                 top: -8px;
                 border-style: solid;
                 border-width: 0 10px 10px 10px;
-                border-color: transparent transparent #BFBFBF transparent;
+                border-color: transparent transparent $ubuntu-cool-grey transparent;
                 transition-duration: 0.3s;
                 transition-property: transform;
             }

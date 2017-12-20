@@ -7,15 +7,7 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="field is-grouped">
-                        <p class="control" v-for="link in applinks">
-                            <bvu-popover :icon="link.class">
-                                <bvu-popover-content slot="popover-content">
-                                    <template>
-                                        no content
-                                    </template>
-                                </bvu-popover-content>
-                            </bvu-popover>
-                        </p>
+                        <slot name="left-links"></slot>
                     </div>
                 </div>
             </div>
@@ -24,17 +16,10 @@
 </template>
 
 <script>
-import popover from './../bulma/popover/popover.vue'
-import popoverContent from './../bulma/popover/popover-content.vue'
 export default {
-    components: {
-        'bvu-popover': popover,
-        'bvu-popover-content': popoverContent
-    },
     props: {
         apptitle: String,
-        appicon: String,
-        applinks: Array
+        appicon: String
     }
 }
 </script>

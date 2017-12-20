@@ -1,6 +1,36 @@
 <template>
   <div id="app">
-    <app-header :apptitle="title" :appicon="icon" :applinks="links"></app-header>
+    <app-header :apptitle="title" :appicon="icon">
+      <template slot="left-links">
+        <p class="control">
+          <bvu-popover :icon="'fa fa-power-off'">
+            <bvu-popover-content slot="popover-content">
+              <template slot>
+                <div id="user-pop-over" class="columns">
+                  <div class="column is-one-third">
+                    <img :src="userInfo.avatar" />
+                  </div>
+                  <div class="column">
+                    <ul>
+                      <li><a class="button is-link"><i class="fa fa-user"></i> {{userInfo.name}}</a></li>
+                      <li><a class="button is-link"><i class="fa fa-globe"></i> {{userInfo.language}}</a></li>
+                      <li><a class="button is-link"><i class="fa fa-clock-o"></i> {{userInfo.timezone}}</a></li>
+                    </ul>
+                    <hr>
+                    <ul class="setting-option">
+                      <li><a class="button is-link"><i class="fa fa-cog"></i></a></li>
+                      <li><a class="button is-link"><i class="fa fa-lock"></i></a></li>
+                      <li><a class="button is-link"><i class="fa fa-power-off"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+                
+              </template>
+            </bvu-popover-content>
+          </bvu-popover>
+        </p>
+      </template>
+    </app-header>
     <app-left-aside :asidelinks="asidelinks"></app-left-aside>
     <div class="container ubuntu-container">
       <transition name="fade" mode="out-in">
@@ -12,6 +42,8 @@
 </template>
 
 <script>
+import popover from './components/bulma/popover/popover.vue'
+import popoverContent from './components/bulma/popover/popover-content.vue'
 
 import appHeader from './components/shared/app-header.vue'
 import appLeftAside from './components/shared/app-left-aside.vue'
@@ -20,6 +52,8 @@ import appLauncher from './components/shared/app-launcher.vue'
 export default {
   name: 'app',
   components: {
+    'bvu-popover': popover,
+    'bvu-popover-content': popoverContent,
     'app-header': appHeader,
     'app-left-aside': appLeftAside,
     'app-launcher': appLauncher
@@ -29,11 +63,26 @@ export default {
         title: 'BulmaVuebuntu',
         icon: 'fa fa-linux',
         links: [
-          { title: 'User Settings', class: 'fa fa-cog' },
-          { title: 'Help', class: 'fa fa-question-circle' },
-          { title: 'Contact Us', class: 'fa fa-envelope' },
-          { title: 'Notifications', class: 'fa fa-comments' },
-          { title: 'Log Off', class: 'fa fa-power-off' }
+          {
+            title: 'User Settings',
+            class: 'fa fa-cog'
+          },
+          {
+            title: 'Help',
+            class: 'fa fa-question-circle'
+          },
+          {
+            title: 'Contact Us',
+            class: 'fa fa-envelope'
+          },
+          {
+            title: 'Notifications',
+            class: 'fa fa-comments'
+          },
+          {
+            title: 'Log Off',
+            class: 'fa fa-power-off'
+          }
         ],
         asidelinks: [
           { title: 'Search', class: 'icon-search', href: 'search' },
@@ -60,13 +109,23 @@ export default {
           { title: 'Market', class: 'icon-market' },
           { title: 'Cases', class: 'icon-cases' },
           { title: 'Help', class: 'icon-help' }
-        ]
+        ],
+        userInfo: {
+          name: 'Senthilkumar Baliah',
+          avatar: 'https://lh3.googleusercontent.com/-wQaUAwFEBZs/AAAAAAAAAAI/AAAAAAAAAAA/AFiYof2lDN6qOil-VKAS4rAW7S9IjMAMOw/s192-c-mo/photo.jpg',
+          language: 'English',
+          timezone: 'CST- Central Standard Time'
+        }
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  $ubuntu-text-color: #f1eeeb;
+  $popup-border: #413e3b;
+  $ubuntu-settings-hover: #3a3838;
+
   .ubuntu-container {
         margin: 0px;
         height: 100%;
@@ -75,5 +134,71 @@ export default {
         padding: 0px;
         background-color: transparent;
         padding: 0px 0px 0px 55px;
+  }
+
+  .popover-content {
+    ul {
+      font-size: 0.75rem;
+      font-weight: normal;
+      li {
+        .is-link {
+          font-size: 0.75rem;
+          font-weight: normal;
+          background-color: transparent;
+          border-color: transparent;
+          color: $ubuntu-text-color;
+          &:hover {
+            color: $ubuntu-text-color;
+          }
+
+          i {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+
+    .setting-option {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-top: 10px;
+
+      .is-link {
+        border-radius: 50%;
+        border: 1px $ubuntu-settings-hover solid;
+        height: 35px;
+        width: 35px;
+        transition: 0.5s all ease;
+        .fa {
+          margin: 0px;
+          font-size: 1rem;
+        }
+
+        &:hover {
+          background-color: $ubuntu-settings-hover;
+          border: 1px $ubuntu-settings-hover solid;
+        }
+      }
+    }
+
+    hr {
+      margin: 10px 0px 10px 0px;
+      border-top: 1px solid $ubuntu-settings-hover;
+      color: $ubuntu-settings-hover;
+    }
+  }
+
+  #user-pop-over {
+    min-width: 300px;
+
+    img {
+      height: 75px;
+      width: 75px;
+      max-width: none;
+      max-height: none;
+      border-radius: 50%;
+    }
   }
 </style>

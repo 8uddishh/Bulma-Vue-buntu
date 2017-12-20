@@ -40,6 +40,7 @@ export default {
             border: 0px;
             padding: 0px 5px;
             height: auto;
+            font-size: 1rem;
         }
     }
 </style>
