@@ -37,7 +37,6 @@
                       <li><a class="button is-link"><i class="fa fa-globe"></i> {{userInfo.language}}</a></li>
                       <li><a class="button is-link"><i class="fa fa-clock-o"></i> {{userInfo.timezone}}</a></li>
                     </ul>
-                    <hr>
                     <ul class="setting-option">
                       <li><a class="button is-link"><i class="fa fa-cog"></i></a></li>
                       <li><a class="button is-link"><i class="fa fa-lock"></i></a></li>
@@ -146,8 +145,8 @@ export default {
 
 <style lang="scss" scoped>
   $ubuntu-text-color: #eaeaea;
-  $popup-border: #413e3b;
   $ubuntu-settings-hover: #3a3838;
+  $ubuntu-imprint-color: #7a7a7a;
 
   .ubuntu-container {
         margin: 0px;
@@ -160,6 +159,12 @@ export default {
   }
 
   .popover-content {
+
+    .columns {
+      .column:not(:last-child) {
+        border-right: 1px solid $ubuntu-imprint-color;
+      }
+    }
     ul {
       font-size: 0.75rem;
       font-weight: normal;
@@ -190,7 +195,7 @@ export default {
 
       .is-link {
         border-radius: 50%;
-        border: 1px $ubuntu-settings-hover solid;
+        border: 1px $ubuntu-imprint-color solid;
         height: 35px;
         width: 35px;
         transition: 0.5s all ease;
@@ -201,21 +206,21 @@ export default {
 
         &:hover {
           background-color: $ubuntu-settings-hover;
-          border: 1px $ubuntu-settings-hover solid;
+          border: 1px $ubuntu-imprint-color solid;
         }
       }
     }
 
     hr {
       margin: 10px 0px 10px 0px;
-      border-top: 1px solid $ubuntu-settings-hover;
-      color: $ubuntu-settings-hover;
+      border-top: 1px solid $ubuntu-imprint-color;
+      color: $ubuntu-imprint-color;
     }
   }
 
   #user-pop-over {
     min-width: 300px;
-
+    margin: 10px;
     .avatar {
       display: flex;
       align-items: center;
@@ -232,5 +237,6 @@ export default {
   }
   #notifications-pop-over {
     min-width: 600px;
+    margin: 10px;
   }
 </style>

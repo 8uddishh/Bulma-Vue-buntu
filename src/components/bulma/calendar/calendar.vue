@@ -42,7 +42,7 @@
             <div class="calendar-date"><button class="date-item">13</button></div>
             <div class="calendar-date"><button class="date-item">14</button></div>
             <div class="calendar-date"><button class="date-item">15</button></div>
-            <div class="calendar-date"><button class="date-item is-active">16</button></div>
+            <div class="calendar-date"><button class="date-item">16</button></div>
             <div class="calendar-date"><button class="date-item">17</button></div>
             <div class="calendar-date"><button class="date-item">18</button></div>
             <div class="calendar-date"><button class="date-item">19</button></div>
@@ -95,6 +95,10 @@ export default {
                 font-weight: normal;
                 background-color: transparent;
                 color: $ubuntu-text-color;
+
+                .fa {
+                    color:$ubuntu-imprint-color;
+                }
             }
 
             .calendar-container {
@@ -123,7 +127,7 @@ export default {
                             border-color: $ubuntu-orange;
                         }
 
-                        &.is-active {
+                        &:hover, &.is-active {
                             background-color: $popup-border;
                             border-color: $ubuntu-orange;
                         }
