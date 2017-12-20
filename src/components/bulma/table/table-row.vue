@@ -1,15 +1,15 @@
 <template>
     <tr>
         <slot v-for="(data, key) in rowdata" v-bind:name="key">
-            <table-cell>
+            <bvu-table-cell>
                 <template slot>{{data}}</template>
-            </table-cell>
+            </bvu-table-cell>
         </slot>
     </tr>
 </template>
 
 <script>
-import tableCell from './table-cell.vue'
+import bvuTableCell from './table-cell.vue'
 export default {
     props: {
         rowdata: {
@@ -17,7 +17,7 @@ export default {
         }
     },
     components: {
-        'table-cell': tableCell
+        'bvu-table-cell': bvuTableCell
     },
     data () {
         return {

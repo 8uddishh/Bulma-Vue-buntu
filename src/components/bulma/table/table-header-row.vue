@@ -1,15 +1,15 @@
 <template>
     <tr>
         <slot v-for="header in headers" v-bind:name="header">
-            <table-header-cell>
+            <bvu-table-header-cell>
                 <template slot>{{header}}</template>
-            </table-header-cell>
+            </bvu-table-header-cell>
         </slot>
     </tr>
 </template>
 
 <script>
-import tableHeaderCell from './table-header-cell.vue'
+import bvuTableHeaderCell from './table-header-cell.vue'
 export default {
     props: {
         headers: {
@@ -17,7 +17,7 @@ export default {
         }
     },
     components: {
-        'table-header-cell': tableHeaderCell
+        'bvu-table-header-cell': bvuTableHeaderCell
     },
     data () {
         return {

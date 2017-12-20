@@ -8,11 +8,13 @@
                 <div class="navbar-item">
                     <div class="field is-grouped">
                         <p class="control" v-for="link in applinks">
-                        <a class="button">
-                            <span class="icon is-small">
-                                <i :class="link.class"></i>
-                            </span>
-                        </a>
+                            <bvu-popover :icon="link.class">
+                                <bvu-popover-content slot="popover-content">
+                                    <template>
+                                        no content
+                                    </template>
+                                </bvu-popover-content>
+                            </bvu-popover>
                         </p>
                     </div>
                 </div>
@@ -22,7 +24,13 @@
 </template>
 
 <script>
+import popover from './../bulma/popover/popover.vue'
+import popoverContent from './../bulma/popover/popover-content.vue'
 export default {
+    components: {
+        'bvu-popover': popover,
+        'bvu-popover-content': popoverContent
+    },
     props: {
         apptitle: String,
         appicon: String,
@@ -56,16 +64,6 @@ export default {
         top: 0px;
         z-index: 102;
         width: 100%;
-        
-        .navbar-end {
-            .button {
-                background-color: transparent !important;
-                color: $alt-color;
-                border: 0px;
-                padding: 0px 5px;
-                height: auto;
-            }
-        }
 
         .navbar-item {
             color: $alt-color; 

@@ -2,20 +2,20 @@
     <table class="table">
         <thead>
             <slot name="header">
-                <table-header-row v-bind:headers="headers"></table-header-row>
+                <bvu-table-header-row v-bind:headers="headers"></bvu-table-header-row>
             </slot>
         </thead>
         <tbody>
             <slot name="body">
-                <table-row v-for="row in rows" v-bind:key="row[identifier]" v-bind:rowdata="row"></table-row>
+                <bvu-table-row v-for="row in rows" v-bind:key="row[identifier]" v-bind:rowdata="row"></bvu-table-row>
             </slot>
         </tbody>
     </table>
 </template>
 
 <script>
-import tableHeaderRow from './table-header-row.vue'
-import tableRow from './table-row.vue'
+import bvuTableHeaderRow from './table-header-row.vue'
+import bvuTableRow from './table-row.vue'
 export default {
     props: {
         headers: {
@@ -29,8 +29,8 @@ export default {
         }
     },
     components: {
-        'table-header-row': tableHeaderRow,
-        'table-row': tableRow
+        'bvu-table-header-row': bvuTableHeaderRow,
+        'bvu-table-row': bvuTableRow
     },
     data () {
         return {
