@@ -224,34 +224,6 @@ export default {
       }
     }
 
-    a {
-      font-size: 0.75rem;
-      background-color: $ubuntu-cool-grey;
-      min-width: 150px;
-      color: $ubuntu-text-color;
-      border: 1px solid $ubuntu-dark-border;
-      font-weight: normal;
-      margin-top: 10px;
-      background: linear-gradient(to bottom right, #3acfd5 0%, #3a4ed5 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  border-image: linear-gradient(to bottom right, #3acfd5 0%, #3a4ed5 100%);
-
-      .tag {
-        margin-right: 5px;
-        border-radius: 10px;
-        padding: 0px 5px;
-        font-size: 0.6rem;
-      }
-
-      &:hover {
-        background-color: $ubuntu-orange;
-      }
-    
-      &.is-active {
-        background-color: $ubuntu-orange;
-      }
-    }
     ul {
       font-size: 0.75rem;
       font-weight: normal;
@@ -286,6 +258,8 @@ export default {
         height: 35px;
         width: 35px;
         transition: 0.5s all ease;
+        box-shadow: 0 1px 6px 0 rgba(0,0,0,.2),0 1px 6px 0 rgba(0,0,0,.19);
+
         .fa {
           margin: 0px;
           font-size: 1rem;
@@ -319,12 +293,42 @@ export default {
         max-width: none;
         max-height: none;
         border-radius: 50%;
+        border: 1px $ubuntu-imprint-color solid;
+        box-shadow: 0 1px 6px 0 rgba(0,0,0,.2),0 1px 6px 0 rgba(0,0,0,.19);
       }
     }
   }
+
   #notifications-pop-over {
     min-width: 700px;
     margin: 10px;
+
+    a {
+      font-size: 0.75rem;
+      background-color: $ubuntu-cool-grey;
+      min-width: 150px;
+      color: $ubuntu-text-color;
+      border: 1px solid $ubuntu-dark-border;
+      font-weight: normal;
+      margin-top: 10px;
+      border: 1px solid white;
+      border-image: linear-gradient(to bottom right, $ubuntu-imprint-color 0%, #8f94a9 100%);
+	    border-image-slice: 1;
+      height: 2rem;
+      transition: all 0.5s ease;
+      box-shadow: 0 1px 6px 0 rgba(0,0,0,.2),0 1px 6px 0 rgba(0,0,0,.19);
+
+      .tag {
+        margin-right: 5px;
+        border-radius: 10px;
+        padding: 0px 5px;
+        font-size: 0.6rem;
+      }
+
+      &:hover, &.is-active {
+        background-color: $ubuntu-orange;
+      }
+    }
 
     .notification-header {
       color: $ubuntu-imprint-color;
@@ -347,6 +351,7 @@ export default {
         position: relative;
         background-color: $ubuntu-notification-item-background;
         margin-bottom: 10px;
+        box-shadow: 0 1px 6px 0 rgba(0,0,0,.2),0 1px 6px 0 rgba(0,0,0,.19);
 
         .notification-icon {
           position: absolute;
