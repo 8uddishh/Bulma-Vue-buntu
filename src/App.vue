@@ -3,7 +3,9 @@
     <app-header :apptitle="title" :appicon="icon">
       <template slot="left-links">
         <p class="control">
-          <bvu-popover :icon="'fa fa-bell'">
+          <bvu-popover :text="userInfo.language" :icononly="false">
+          </bvu-popover>
+          <bvu-popover :icon="'fa fa-bell'" :icononly="true">
             <bvu-popover-content slot="popover-content">
               <template slot>
                 <div id="notifications-pop-over" class="columns">
@@ -32,7 +34,7 @@
             </bvu-popover-content>
           </bvu-popover>
 
-          <bvu-popover :icon="'fa fa-power-off'">
+          <bvu-popover :icon="'fa fa-power-off'" :icononly="true">
             <bvu-popover-content slot="popover-content">
               <template slot>
                 <div id="user-pop-over" class="columns">
@@ -49,7 +51,6 @@
                       <li><a class="button is-link"><i class="fa fa-key fa-rotate-180"></i> Manage credentials</a></li>
                       <li><a class="button is-link"><i class="fa fa-tasks"></i> Manage activities</a></li>
                       <li><a class="button is-link"><i class="fa fa-cogs"></i> Manage widgets</a></li>
-                      <li><a class="button is-link"><i class="fa fa-globe"></i> {{userInfo.language}}</a></li>
                       <li><a class="button is-link"><i class="fa fa-clock-o"></i> {{userInfo.timezone}}</a></li>
                     </ul>
                     <ul class="setting-option">
@@ -150,7 +151,7 @@ export default {
         userInfo: {
           name: 'Senthilkumar Baliah',
           avatar: 'https://lh3.googleusercontent.com/-wQaUAwFEBZs/AAAAAAAAAAI/AAAAAAAAAAA/AFiYof2lDN6qOil-VKAS4rAW7S9IjMAMOw/s192-c-mo/photo.jpg',
-          language: 'English',
+          language: 'En',
           timezone: 'CST- Central Standard Time'
         },
         notifications: [

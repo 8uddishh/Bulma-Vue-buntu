@@ -1,6 +1,6 @@
 <template>
     <div class="popover-wrapper">
-        <bvu-popover-link :icon="icon">
+        <bvu-popover-link :icon="icon" :icononly="icononly" :text="text">
         </bvu-popover-link>
         <slot name="popover-content">
             <bvu-popover-content>

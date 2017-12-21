@@ -4,7 +4,7 @@
             <i :class="icon" ></i>
         </span>
         <span v-else>
-            <i v-if="icon" :class="icon" ></i> {{text}}
+            <i v-if="icon" :class="icon" ></i>{{text}}
         </span>
     </a>
 </template>
