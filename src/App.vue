@@ -8,31 +8,24 @@
               <template slot>
                 <div id="notifications-pop-over" class="columns">
                   <div class="column">
+                    <div class="is-uppercase notification-header">
+                      Notifications
+                    </div>
                     <ul class="notifications">
-                      <li>
-                        Action requires your approval
-                        <div class="notification-icon"><i class="fa fa-exclamation-circle"></i></div>
-                      </li>
-                      <li>
-                        You have a new permission
-                        <div class="notification-icon"><i class="fa fa-user"></i></div>
-                      </li>
-                      <li>
-                        Remainder for movie
-                        <div class="notification-icon"><i class="fa fa-clock-o"></i></div>
-                      </li>
-                      <li>
-                        Starwars bundle sells 1000 units
-                        <div class="notification-icon"><i class="fa fa-binoculars"></i></div>
-                      </li>
-                      <li>
-                        The Rooster Bar by John Grisham book launch
-                        <div class="notification-icon"><i class="fa fa-calendar"></i></div>
+                      <li v-for="notification in notifications" :key="notification.id">
+                        {{notification.message}}
+                        <div class="notification-icon" :class="notification.class"><i :class="notification.icon"></i></div>
                       </li>
                     </ul>
                   </div>
                   <div class="column is-two-fifths">
                     <bvu-calendar></bvu-calendar>
+                    <div class="is-pulled-right">
+                      <a class="button">
+                        <span class="tag is-light">10</span>
+                        <span>Actions Required</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </template>
@@ -159,7 +152,39 @@ export default {
           avatar: 'https://lh3.googleusercontent.com/-wQaUAwFEBZs/AAAAAAAAAAI/AAAAAAAAAAA/AFiYof2lDN6qOil-VKAS4rAW7S9IjMAMOw/s192-c-mo/photo.jpg',
           language: 'English',
           timezone: 'CST- Central Standard Time'
-        }
+        },
+        notifications: [
+          {
+            id: 1,
+            class: 'notication-action',
+            icon: 'fa fa-exclamation-circle',
+            message: 'Action requires your approval'
+          },
+          {
+            id: 2,
+            class: '',
+            icon: 'fa fa-user',
+            message: 'You have a new permission'
+          },
+          {
+            id: 3,
+            class: 'notication-reminder',
+            icon: 'fa fa-clock-o',
+            message: 'Reminder for movie'
+          },
+          {
+            id: 4,
+            class: 'notication-watchlist',
+            icon: 'fa fa-binoculars',
+            message: 'Starwars bundle sells 1000 units'
+          },
+          {
+            id: 5,
+            class: 'notication-event',
+            icon: 'fa fa-calendar',
+            message: 'The Rooster Bar by John Grisham book launch'
+          }
+        ]
     }
   }
 }
@@ -172,6 +197,14 @@ export default {
 
   $ubuntu-settings-notification: rgba(69,142,254, 0.8);
   $ubuntu-notification-item-background: rgba(95,93,93, 0.8);
+  $ubuntu-actions-notification: rgba(199, 14, 14, 0.8);
+  $ubuntu-reminder-notification: rgba(20, 136, 81, 0.8);
+  $ubuntu-watchlist-notification: rgba(155, 96, 222, 0.8);
+  $ubuntu-events-notification: rgba(164, 171, 27, 0.8);
+  
+  $ubuntu-dark-border: #5a585a;
+  $ubuntu-cool-grey: #4a4a48;
+  $ubuntu-orange: #E95420;
 
   .ubuntu-container {
         margin: 0px;
@@ -188,6 +221,35 @@ export default {
     .columns {
       .column:not(:last-child) {
         border-right: 1px solid $ubuntu-imprint-color;
+      }
+    }
+
+    a {
+      font-size: 0.75rem;
+      background-color: $ubuntu-cool-grey;
+      min-width: 150px;
+      color: $ubuntu-text-color;
+      border: 1px solid $ubuntu-dark-border;
+      font-weight: normal;
+      margin-top: 10px;
+      background: linear-gradient(to bottom right, #3acfd5 0%, #3a4ed5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-image: linear-gradient(to bottom right, #3acfd5 0%, #3a4ed5 100%);
+
+      .tag {
+        margin-right: 5px;
+        border-radius: 10px;
+        padding: 0px 5px;
+        font-size: 0.6rem;
+      }
+
+      &:hover {
+        background-color: $ubuntu-orange;
+      }
+    
+      &.is-active {
+        background-color: $ubuntu-orange;
       }
     }
     ul {
@@ -264,6 +326,13 @@ export default {
     min-width: 700px;
     margin: 10px;
 
+    .notification-header {
+      color: $ubuntu-imprint-color;
+      font-size: 0.75rem;
+      margin-bottom: 10px;
+      font-weight: normal;
+    }
+
     .is-two-fifths {
       max-width: 240px;
     }
@@ -302,6 +371,39 @@ export default {
             border-left: 10px solid $ubuntu-settings-notification;
             content: '';
           }
+
+          &.notication-action {
+            background-color: $ubuntu-actions-notification;
+
+            &:after {
+              border-left: 10px solid $ubuntu-actions-notification;
+            }
+          }
+
+          &.notication-reminder {
+            background-color: $ubuntu-reminder-notification;
+
+            &:after {
+              border-left: 10px solid $ubuntu-reminder-notification;
+            }
+          }
+
+          &.notication-watchlist {
+            background-color: $ubuntu-watchlist-notification;
+
+            &:after {
+              border-left: 10px solid $ubuntu-watchlist-notification;
+            }
+          }
+
+          &.notication-event {
+            background-color: $ubuntu-events-notification;
+
+            &:after {
+              border-left: 10px solid $ubuntu-events-notification;
+            }
+          }
+
           .fa {
             font-size: 2rem;
           }
