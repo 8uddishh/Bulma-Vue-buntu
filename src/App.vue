@@ -8,6 +8,28 @@
               <template slot>
                 <div id="notifications-pop-over" class="columns">
                   <div class="column">
+                    <ul class="notifications">
+                      <li>
+                        Action requires your approval
+                        <div class="notification-icon"><i class="fa fa-exclamation-circle"></i></div>
+                      </li>
+                      <li>
+                        You have a new permission
+                        <div class="notification-icon"><i class="fa fa-user"></i></div>
+                      </li>
+                      <li>
+                        Remainder for movie
+                        <div class="notification-icon"><i class="fa fa-clock-o"></i></div>
+                      </li>
+                      <li>
+                        Starwars bundle sells 1000 units
+                        <div class="notification-icon"><i class="fa fa-binoculars"></i></div>
+                      </li>
+                      <li>
+                        The Rooster Bar by John Grisham book launch
+                        <div class="notification-icon"><i class="fa fa-calendar"></i></div>
+                      </li>
+                    </ul>
                   </div>
                   <div class="column is-two-fifths">
                     <bvu-calendar></bvu-calendar>
@@ -148,6 +170,9 @@ export default {
   $ubuntu-settings-hover: #3a3838;
   $ubuntu-imprint-color: #7a7a7a;
 
+  $ubuntu-settings-notification: rgba(69,142,254, 0.8);
+  $ubuntu-notification-item-background: rgba(95,93,93, 0.8);
+
   .ubuntu-container {
         margin: 0px;
         height: 100%;
@@ -236,7 +261,52 @@ export default {
     }
   }
   #notifications-pop-over {
-    min-width: 600px;
+    min-width: 700px;
     margin: 10px;
+
+    .is-two-fifths {
+      max-width: 240px;
+    }
+
+    .notifications {
+      li {
+        padding: 10px 10px 10px 80px;
+        min-height: 50px;
+        max-width: 410px;
+        border: 1px solid $ubuntu-imprint-color;
+        border-radius: 5px;
+        position: relative;
+        background-color: $ubuntu-notification-item-background;
+        margin-bottom: 10px;
+
+        .notification-icon {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          height: 100%;
+          width: 60px;
+          background-color: $ubuntu-settings-notification;
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:after {
+            width: 0; 
+            height: 0; 
+            position:absolute;
+            left: 60px;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid $ubuntu-settings-notification;
+            content: '';
+          }
+          .fa {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
   }
 </style>
