@@ -95,7 +95,7 @@ export default {
 
                 &:not(:first-of-type) {
                     position: relative;
-                    height: 435px;
+                    height: 300px;
                     overflow-y:hidden;
                     padding: 10px 0px;
                     border: 1px solid $ubuntu-imprint-color;
@@ -120,9 +120,9 @@ export default {
             top: 10px;
             padding: 0px 10px;
             li {
-                padding: 10px 10px 10px 10px;
+                padding: 5px 10px 2px 10px;
                 min-height: 30px;
-                max-width: 410px;
+                max-width: 450px;
                 border: 1px solid $ubuntu-imprint-color;
                 border-radius: 5px;
                 position: relative;

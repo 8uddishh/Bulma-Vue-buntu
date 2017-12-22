@@ -6,7 +6,7 @@
                 <i class="fa fa-chevron-left"></i>
             </button>
             </div>
-            <div>March 2017</div>
+            <div>{{consts.months[month]}} {{year}}</div>
             <div class="calendar-nav-right">
             <button class="button is-text">
                 <i class="fa fa-chevron-right"></i>
@@ -15,50 +15,13 @@
         </div>
         <div class="calendar-container">
             <div class="calendar-header">
-            <div class="calendar-date">S</div>
-            <div class="calendar-date">M</div>
-            <div class="calendar-date">T</div>
-            <div class="calendar-date">W</div>
-            <div class="calendar-date">T</div>
-            <div class="calendar-date">F</div>
-            <div class="calendar-date">S</div>
+            <div class="calendar-date" v-for="(day, index) in consts.weekdaysShort" :key="index">{{day}}</div>
             </div>
             <div class="calendar-body">
-            <div class="calendar-date is-disabled"><button class="date-item">26</button></div>
-            <div class="calendar-date is-disabled"><button class="date-item">27</button></div>
-            <div class="calendar-date is-disabled"><button class="date-item">28</button></div>
-            <div class="calendar-date"><button class="date-item">1</button></div>
-            <div class="calendar-date"><button class="date-item">2</button></div>
-            <div class="calendar-date"><button class="date-item">3</button></div>
-            <div class="calendar-date tooltip" data-tooltip="Today"><button class="date-item is-today">4</button></div>
-            <div class="calendar-date tooltip" data-tooltip="Not available" disabled=""><button class="date-item">5</button></div>
-            <div class="calendar-date"><button class="date-item">6</button></div>
-            <div class="calendar-date"><button class="date-item">7</button></div>
-            <div class="calendar-date tooltip" data-tooltip="You have appointments"><button class="date-item">8</button></div>
-            <div class="calendar-date"><button class="date-item">9</button></div>
-            <div class="calendar-date"><button class="date-item">10</button></div>
-            <div class="calendar-date"><button class="date-item">11</button></div>
-            <div class="calendar-date"><button class="date-item">12</button></div>
-            <div class="calendar-date"><button class="date-item">13</button></div>
-            <div class="calendar-date"><button class="date-item">14</button></div>
-            <div class="calendar-date"><button class="date-item">15</button></div>
-            <div class="calendar-date"><button class="date-item">16</button></div>
-            <div class="calendar-date"><button class="date-item">17</button></div>
-            <div class="calendar-date"><button class="date-item">18</button></div>
-            <div class="calendar-date"><button class="date-item">19</button></div>
-            <div class="calendar-date"><button class="date-item is-active">20</button></div>
-            <div class="calendar-date"><button class="date-item">21</button></div>
-            <div class="calendar-date"><button class="date-item">22</button></div>
-            <div class="calendar-date"><button class="date-item">23</button></div>
-            <div class="calendar-date"><button class="date-item">24</button></div>
-            <div class="calendar-date"><button class="date-item">25</button></div>
-            <div class="calendar-date"><button class="date-item">26</button></div>
-            <div class="calendar-date"><button class="date-item">27</button></div>
-            <div class="calendar-date"><button class="date-item">28</button></div>
-            <div class="calendar-date"><button class="date-item">29</button></div>
-            <div class="calendar-date"><button class="date-item">30</button></div>
-            <div class="calendar-date"><button class="date-item">31</button></div>
-            <div class="calendar-date is-disabled"><button class="date-item">1</button></div>
+                <div v-for="day in days" :key="day.id" class="calendar-date" 
+                    :class="{'is-disabled': day.isDisabled}">
+                    <button class="date-item" :class="{'is-today': day.isToday, 'is-active': day.isSelected}">{{day.day}}</button>
+                </div>
             </div>
         </div>
         </div>
@@ -70,9 +33,103 @@ export default {
     },
     data () {
         return {
+            nowDate: null,
+            consts: {
+                weekStart: 1,
+                previousMonth: 'Previous Month',
+                nextMonth: 'Next Month',
+                months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                weekdays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                weekdaysShort: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+            }
         }
     },
     methods: {
+        isLeapYear: function (year) {
+            // solution by Matti Virkkunen: http://stackoverflow.com/a/4881951
+            return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+        },
+        getDaysInMonth: function (year, month) {
+            return [31, this.isLeapYear(year) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month]
+        },
+        compareDates: function (a, b) {
+            // weak date comparison (use setToStartOfDay(date) to ensure correct result)
+            console.log(a.getTime(), b.getTime(), a.getTime() === b.getTime())
+            return a.getTime() === b.getTime()
+        }
+    },
+    computed: {
+        month: function () {
+            if (this.nowDate) {
+                return this.nowDate.getMonth()
+            }
+            return 0
+        },
+        year: function () {
+            if (this.nowDate) {
+                return this.nowDate.getFullYear()
+            }
+            return 0
+        },
+        days: function () {
+            let daysarr = []
+            if (this.nowDate) {
+                let days = this.getDaysInMonth(this.year, this.month)
+                let before = new Date(this.year, this.month, 1).getDay()
+                if (this.consts.weekStart > 0) {
+                    before -= this.consts.weekStart - 1
+                    if (before < 0) {
+                        before += 7
+                    }
+                }
+
+                let cells = days + before
+                let after = cells
+                while (after > 7) {
+                    after -= 7
+                }
+                cells += 7 - after
+
+                for (var i = 0; i < cells; i++) {
+                    let day = new Date(this.year, this.month, 1 + (i - before))
+                    let isBetween = false
+                    let isSelected = false
+                    let isSelectedIn = false
+                    let isSelectedOut = false
+                    let isToday = this.compareDates(day, this.nowDate)
+                    let isEmpty = i < before || i >= (days + before)
+                    let isDisabled = false
+
+                    if (!isSelected) {
+                        isSelectedIn = false
+                        isSelectedOut = false
+                    }
+
+                    if (day.getMonth() !== this.month) {
+                        isDisabled = true
+                    }
+
+                    daysarr.push({
+                        id: i,
+                        day: day.getDate(),
+                        isSelected: isSelected,
+                        isToday: isToday,
+                        isDisabled: isDisabled,
+                        isEmpty: isEmpty,
+                        isBetween: isBetween,
+                        isSelectedIn: isSelectedIn,
+                        isSelectedOut: isSelectedOut
+                    })
+                }
+            }
+
+            return daysarr
+        }
+    },
+    created () {
+        this.nowDate = new Date()
+        this.nowDate.setHours(0, 0, 0, 0)
     }
 }
 </script>

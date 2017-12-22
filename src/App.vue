@@ -164,7 +164,6 @@ export default {
     fbaxios.get('https://basic-bot-b6287.firebaseio.com/timezones.json')
       .then(data => {
         this.timezones = data
-        console.log(this.timezones)
       })
   }
 }
