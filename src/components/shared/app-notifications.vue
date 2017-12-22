@@ -1,17 +1,19 @@
 <template>
     <div class="notifications-pop-over columns">
         <div class="column">
-            <div class="is-uppercase notification-header">
-                Notifications
-            </div>
-            <ul class="notifications">
+            <div class="notif-container">
+              <ul class="notifications">
                 <li v-for="notification in notifications" :key="notification.id">
                     {{notification.message}}
                     <div class="notification-icon" :class="notification.class">
                         <i :class="notification.icon"></i>
                     </div>
                 </li>
-            </ul>
+              </ul>
+              <div class="is-uppercase notification-header">
+                Notifications
+              </div>
+            </div>
         </div>
         <div class="column is-two-fifths">
             <bvu-calendar></bvu-calendar>
@@ -53,7 +55,7 @@ export default {
 
 .notifications-pop-over {
     min-width: 700px;
-    margin: 10px;
+    margin: 10px 0px;
 
     a {
       font-size: 0.75rem;
@@ -87,19 +89,53 @@ export default {
       font-size: 0.75rem;
       margin-bottom: 10px;
       font-weight: normal;
+      position: fixed;
+      top: 20px;
+      width: 60%;
+      padding-bottom: 5px;
+      background-color: $ubuntu-cool-grey;
     }
 
     .is-two-fifths {
       max-width: 240px;
     }
 
+    .notif-container {
+      max-height: 350px;
+      overflow-y: hidden;
+      position: relative;
+
+      &:hover {
+        overflow-y: scroll;
+      }
+
+      &::-webkit-scrollbar-track
+      {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        background-color: $ubuntu-imprint-color; // #F5F5F5;
+      }
+
+      &::-webkit-scrollbar
+      {
+        width: 8px;
+        background-color: $ubuntu-imprint-color; // #F5F5F5;
+      }
+
+      &::-webkit-scrollbar-thumb
+      {
+        background-image: -webkit-gradient(linear, left bottom, left top, 
+          color-stop(0.44, #9a9ca2), color-stop(0.72, #5f6165), color-stop(0.86, #5a606d));
+      }
+    }
+
     .notifications {
       font-size: 0.75rem;
       font-weight: normal;
+      margin-top: 30px;
       li {
         padding: 10px 10px 10px 80px;
         min-height: 50px;
-        max-width: 410px;
+        max-width: 430px;
         border: 1px solid $ubuntu-imprint-color;
         border-radius: 5px;
         position: relative;
@@ -169,8 +205,14 @@ export default {
         }
       }
     }
+    .column:first-child {
+      padding: 12px 10px 12px 0px;
+    }
     .column:not(:last-child) {
         border-right: 1px solid $ubuntu-imprint-color;
+        &:hover {
+          border-right: 1px solid transparent;
+        }
     }
   }
 </style>

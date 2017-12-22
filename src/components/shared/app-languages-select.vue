@@ -100,7 +100,22 @@ export default {
                     padding: 10px 0px;
                     border: 1px solid $ubuntu-imprint-color;
                     &:hover {
-                        overflow-y:scroll;
+                        overflow-y: scroll;
+                    }
+                    &::-webkit-scrollbar-track
+                    {
+                        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+                        background-color: $ubuntu-imprint-color; // #F5F5F5;
+                    }
+                    &::-webkit-scrollbar
+                    {
+                        width: 8px;
+                        background-color: $ubuntu-imprint-color; // #F5F5F5;
+                    }
+                    &::-webkit-scrollbar-thumb
+                    {
+                        background-image: -webkit-gradient(linear, left bottom, left top, 
+                        color-stop(0.44, #9a9ca2), color-stop(0.72, #5f6165), color-stop(0.86, #5a606d));
                     }
                 }
             }

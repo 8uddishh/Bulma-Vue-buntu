@@ -150,6 +150,18 @@ export default {
             class: 'notication-event',
             icon: 'fa fa-calendar',
             message: 'The Rooster Bar by John Grisham book launch'
+          },
+          {
+            id: 6,
+            class: 'notication-watchlist',
+            icon: 'fa fa-binoculars',
+            message: 'Your request is pending approval for 2 days'
+          },
+          {
+            id: 7,
+            class: 'notication-event',
+            icon: 'fa fa-calendar',
+            message: 'Marvel comics sale'
           }
         ],
         languages: [],
