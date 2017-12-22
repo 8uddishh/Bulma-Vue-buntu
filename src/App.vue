@@ -9,7 +9,7 @@
                 <div id="languages-pop-over" class="columns">
                   <div class="column">
                     <nav class="panel">
-                      <p class="panel-heading is-uppercase">languages</p>
+                      <p class="panel-heading is-uppercase"><i class="fa fa-globe"></i> languages</p>
                       <div class="panel-block">
                         <ul class="languages">
                           <li v-for="language in languages" :key="language.id">
@@ -24,7 +24,7 @@
                   </div>
                   <div class="column">
                     <nav class="panel">
-                      <p class="panel-heading is-uppercase">Timezones</p>
+                      <p class="panel-heading is-uppercase"><i class="fa fa-clock-o"></i> Timezones</p>
                       <div class="panel-block">
                         <ul class="languages">
                         </ul>
@@ -81,7 +81,6 @@
                       <li><a class="button is-link"><i class="fa fa-key fa-rotate-180"></i> Manage credentials</a></li>
                       <li><a class="button is-link"><i class="fa fa-tasks"></i> Manage activities</a></li>
                       <li><a class="button is-link"><i class="fa fa-cogs"></i> Manage widgets</a></li>
-                      <li><a class="button is-link"><i class="fa fa-clock-o"></i> {{userInfo.timezone}}</a></li>
                     </ul>
                     <ul class="setting-option">
                       <li><a class="button is-link"><i class="fa fa-cog"></i></a></li>
