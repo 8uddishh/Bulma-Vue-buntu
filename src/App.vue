@@ -4,6 +4,36 @@
       <template slot="left-links">
         <p class="control">
           <bvu-popover :text="userInfo.language" :icononly="false">
+            <bvu-popover-content slot="popover-content">
+              <template slot>
+                <div id="languages-pop-over" class="columns">
+                  <div class="column">
+                    <nav class="panel">
+                      <p class="panel-heading is-uppercase">languages</p>
+                      <div class="panel-block">
+                        <ul class="languages">
+                          <li v-for="language in languages" :key="language.id">
+                            <span class="title is-block">{{language.name}}</span>
+                            <span class="subtitle">{{language.nativeName}}</span>
+                            <span class="tag is-success is-capitalized" v-if="language.enabled">{{language.code}}</span>
+                            <span class="tag is-danger is-capitalized" v-else>{{language.code}}</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </nav>
+                  </div>
+                  <div class="column">
+                    <nav class="panel">
+                      <p class="panel-heading is-uppercase">Timezones</p>
+                      <div class="panel-block">
+                        <ul class="languages">
+                        </ul>
+                      </div>
+                    </nav>
+                  </div>
+                </div>
+              </template>
+            </bvu-popover-content>
           </bvu-popover>
           <bvu-popover :icon="'fa fa-bell'" :icononly="true">
             <bvu-popover-content slot="popover-content">
@@ -78,6 +108,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import popover from './components/bulma/popover/popover.vue'
 import popoverContent from './components/bulma/popover/popover-content.vue'
 import calendar from './components/bulma/calendar/calendar.vue'
@@ -185,8 +216,20 @@ export default {
             icon: 'fa fa-calendar',
             message: 'The Rooster Bar by John Grisham book launch'
           }
-        ]
+        ],
+        languages: []
     }
+  },
+  created () {
+    axios.get('https://basic-bot-b6287.firebaseio.com/languages.json')
+      .then(response => {
+        return response.data
+      }).then(data => {
+        for (let key in data) {
+          data[key].id = key
+          this.languages.push(data[key])
+        }
+      })
   }
 }
 </script>
@@ -218,7 +261,6 @@ export default {
   }
 
   .popover-content {
-
     .columns {
       .column:not(:last-child) {
         border-right: 1px solid $ubuntu-imprint-color;
@@ -280,9 +322,83 @@ export default {
     }
   }
 
+  #languages-pop-over {
+    min-width: 700px;
+    margin: 0px;
+
+    .panel {
+      .panel-heading {
+        background-color: $ubuntu-imprint-color;
+        border: 1px solid $ubuntu-imprint-color;
+        font-size: 0.85rem;
+        font-weight: bold;
+        padding-top: 20px;
+      }
+      .panel-block {
+        position: relative;
+        height: 530px;
+        overflow-y:hidden;
+        padding: 10px 0px;
+        border: 1px solid $ubuntu-imprint-color;
+
+        &:hover {
+          overflow-y:scroll;
+        }
+      }
+    }
+
+    .column {
+      padding: 0px;
+    }
+
+    .column:not(:last-child) {
+      margin-right: 10px;
+      border-right: 1px solid transparent;
+    }
+
+    .languages {
+      position:absolute; 
+      top: 10px;
+      padding: 0px 10px;
+      li {
+        padding: 10px 10px 10px 10px;
+        min-height: 30px;
+        max-width: 410px;
+        border: 1px solid $ubuntu-imprint-color;
+        border-radius: 5px;
+        position: relative;
+        background-color: $ubuntu-notification-item-background;
+        margin-bottom: 10px;
+        box-shadow: 0 1px 6px 0 rgba(0,0,0,.2),0 1px 6px 0 rgba(0,0,0,.19);
+
+        .title {
+          font-size: 0.85rem;
+          color: $ubuntu-text-color;
+          margin: 0px !important;
+          font-weight: normal;
+        }
+
+        .subtitle {
+          font-size: 0.65rem;
+          color: #191818;
+          font-weight: bold;
+        }
+
+        .tag {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          font-size: 0.65rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
   #user-pop-over {
     min-width: 300px;
     margin: 10px;
+    
     .avatar {
       display: flex;
       align-items: center;
