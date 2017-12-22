@@ -2,13 +2,13 @@
     <div class="calendar">
         <div class="calendar-nav">
             <div class="calendar-nav-left">
-            <button class="button is-text">
+            <button class="button is-text" @click.prevent="prevmonth">
                 <i class="fa fa-chevron-left"></i>
             </button>
             </div>
             <div>{{consts.months[month]}} {{year}}</div>
             <div class="calendar-nav-right">
-            <button class="button is-text">
+            <button class="button is-text" @click.prevent="nextmonth">
                 <i class="fa fa-chevron-right"></i>
             </button>
             </div>
@@ -34,6 +34,8 @@ export default {
     data () {
         return {
             nowDate: null,
+            month: null,
+            year: null,
             consts: {
                 weekStart: 1,
                 previousMonth: 'Previous Month',
@@ -57,21 +59,25 @@ export default {
             // weak date comparison (use setToStartOfDay(date) to ensure correct result)
             console.log(a.getTime(), b.getTime(), a.getTime() === b.getTime())
             return a.getTime() === b.getTime()
+        },
+        prevmonth: function () {
+            if (this.month > 0) {
+                this.month --
+            } else {
+                this.month = 11
+                this.year --
+            }
+        },
+        nextmonth: function () {
+            if (this.month < 11) {
+                this.month ++
+            } else {
+                this.month = 0
+                this.year ++
+            }
         }
     },
     computed: {
-        month: function () {
-            if (this.nowDate) {
-                return this.nowDate.getMonth()
-            }
-            return 0
-        },
-        year: function () {
-            if (this.nowDate) {
-                return this.nowDate.getFullYear()
-            }
-            return 0
-        },
         days: function () {
             let daysarr = []
             if (this.nowDate) {
@@ -130,6 +136,14 @@ export default {
     created () {
         this.nowDate = new Date()
         this.nowDate.setHours(0, 0, 0, 0)
+
+        if (this.nowDate) {
+            this.month = this.nowDate.getMonth()
+        }
+
+        if (this.nowDate) {
+            this.year = this.nowDate.getFullYear()
+        }
     }
 }
 </script>
@@ -146,6 +160,11 @@ export default {
             font-size: 1rem;
             background-color: transparent;
             color: $ubuntu-text-color;
+
+            .is-text:focus {
+                background-color: transparent;
+                border-color: transparent;
+            }
 
             .calendar-nav {
                 font-size: 0.75rem;
