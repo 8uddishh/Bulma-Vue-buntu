@@ -3,17 +3,26 @@
     <app-header :apptitle="title" :appicon="icon">
       <template slot="left-links">
         <p class="control">
-          <bvu-popover :text="userInfo.language" :icononly="false">
+          <bvu-popover :text="userInfo.language" :icononly="false" :vclass="'is-reverse-link'">
             <bvu-popover-content slot="popover-content">
               <template slot>
                 <app-languages-select :languages="languages" :timezones="timezones"></app-languages-select>
               </template>
             </bvu-popover-content>
           </bvu-popover>
+
           <bvu-popover :icon="'fa fa-bell'" :icononly="true">
             <bvu-popover-content slot="popover-content">
               <template slot>
                 <app-notifications :notifications="notifications"></app-notifications>  
+              </template>
+            </bvu-popover-content>
+          </bvu-popover>
+
+          <bvu-popover :icon="'fa fa-university'" :icononly="true">
+            <bvu-popover-content slot="popover-content">
+              <template slot>
+                <app-services></app-services> 
               </template>
             </bvu-popover-content>
           </bvu-popover>
@@ -46,6 +55,7 @@ import popoverContent from './components/bulma/popover/popover-content.vue'
 import appHeader from './components/shared/app-header.vue'
 import appLeftAside from './components/shared/app-left-aside.vue'
 import appLauncher from './components/shared/app-launcher.vue'
+import appServices from './components/shared/app-services.vue'
 import appLanguagesSelect from './components/shared/app-languages-select.vue'
 import appNotifications from './components/shared/app-notifications.vue'
 import appUserMinimum from './components/shared/app-user-minimum.vue'
@@ -58,6 +68,7 @@ export default {
     'app-header': appHeader,
     'app-left-aside': appLeftAside,
     'app-launcher': appLauncher,
+    'app-services': appServices,
     'app-languages-select': appLanguagesSelect,
     'app-notifications': appNotifications,
     'app-user-minimum': appUserMinimum

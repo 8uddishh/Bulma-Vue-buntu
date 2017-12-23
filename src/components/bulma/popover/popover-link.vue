@@ -1,5 +1,5 @@
 <template>
-    <a class="button">
+    <a class="button" :class="vclass">
         <span v-if="icononly" class="icon is-small">
             <i :class="icon" ></i>
         </span>
@@ -20,6 +20,9 @@ export default {
         },
         text: {
             type: String
+        },
+        vclass: {
+            type: String
         }
     },
     data () {
@@ -35,7 +38,7 @@ export default {
     $alt-color: #eaeaea;
     .navbar-end {
         .button {
-            background-color: transparent !important;
+            background-color: transparent;
             color: $alt-color;
             border: 0px;
             padding: 0px 5px;

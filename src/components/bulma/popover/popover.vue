@@ -1,6 +1,6 @@
 <template>
     <div class="popover-wrapper">
-        <bvu-popover-link :icon="icon" :icononly="icononly" :text="text">
+        <bvu-popover-link :icon="icon" :icononly="icononly" :text="text" :vclass="vclass">
         </bvu-popover-link>
         <slot name="popover-content">
             <bvu-popover-content>
@@ -25,6 +25,9 @@ export default {
             type: Boolean
         },
         text: {
+            type: String
+        },
+        vclass: {
             type: String
         }
     },

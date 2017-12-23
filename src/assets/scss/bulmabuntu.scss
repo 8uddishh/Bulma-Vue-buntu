@@ -254,5 +254,13 @@ body {
             background-image: url('../icons/help-128.png');
         }
     }
+    .is-reverse-link {
+        color: transparent;
+        background-color: $ubuntu-light-border !important;
+
+        span {
+            color: $navbar-background-color !important;
+        }
+    }
 }
 
