@@ -146,7 +146,7 @@ export default {
                 box-shadow: 0 1px 6px 0 rgba(0,0,0,.2),0 1px 6px 0 rgba(0,0,0,.19);
 
                 .title {
-                    font-size: 0.85rem;
+                    font-size: 0.75rem;
                     color: $ubuntu-text-color;
                     margin: 0px !important;
                     font-weight: normal;

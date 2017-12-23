@@ -1,100 +1,79 @@
 <template>
     <div class="services-pop-over columns">
         <div class="column">
-            <div class="tabs is-right">
-                <ul>
-                    <li class="is-active"><a><i class="fa fa-question-circle"></i> Help</a></li>
-                    <li><a><i class="fa fa-download"></i> Downloads</a></li>
-                    <li><a><i class="fa fa-exclamation-triangle"></i> Report a problem</a></li>
-                    <li><a><i class="fa fa-link"></i>Links</a></li>
-                </ul>
-            </div>
-            <div class="container">
-                <div class="columns">
-                    <div class="column service-header">Help Title 1</div>
-                    <div class="column is-one-third">
-                        <p class="control has-icons-left">
-                            <input class="input is-small" type="text" placeholder="Search">
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </p>
-                    </div>
-                </div>
-                <div class="columns">
-                    <div class="column service-body has-scroll">
-                        <p>
-When I orbited the Earth in a spaceship, I saw for the first time how beautiful our planet is. Mankind, let us preserve and increase this beauty, and not destroy it!
-
-Here men from the planet Earth first set foot upon the Moon. July 1969 AD. We came in peace for all mankind.
-
-We have an infinite amount to learn both from nature and from each other
-
-Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.
-
-It suddenly struck me that that tiny pea, pretty and blue, was the Earth. I put up my thumb and shut one eye, and my thumb blotted out the planet Earth. I didn't feel like a giant. I felt very, very small.
-</p><p>
-    The Earth was small, light blue, and so touchingly alone, our home that must be defended like a holy relic. The Earth was absolutely round. I believe I never knew what the word round meant until I saw Earth from space.
-
-To go places and do things that have never been done before – that’s what living is all about.
-
-The path of a cosmonaut is not an easy, triumphant march to glory. You have to get to know the meaning not just of joy but also of grief, before being allowed in the spacecraft cabin.
-
-NASA is not about the ‘Adventure of Human Space Exploration’…We won’t be doing it just to get out there in space – we’ll be doing it because the things we learn out there will be making life better for a lot of people who won’t be able to go.
-
-Curious that we spend more time congratulating people who have succeeded than encouraging people who have not.
-
-Many say exploration is part of our destiny, but it’s actually our duty to future generations and their quest to ensure the survival of the human species.
-</p>
-                    </div>
-                    <div class="column is-one-third help-list has-scroll">
-                        <ul class="services">
-                            <li>
-                                <span class="title is-block">Help Title 1</span>
-                                <span class="subtitle">Help Subtitle 1</span>
-                            </li>
-                            <li>
-                                <span class="title is-block">Help Title 2</span>
-                                <span class="subtitle">Help Subtitle 2</span>
-                                <span class="fa fa-check-circle"></span>
-                            </li>
-                            <li>
-                                <span class="title is-block">Help Title 3</span>
-                                <span class="subtitle">Help Subtitle 3</span>
-                            </li>
-                            <li>
-                                <span class="title is-block">Help Title 4</span>
-                                <span class="subtitle">Help Subtitle 4</span>
-                            </li>
-                            <li>
-                                <span class="title is-block">Help Title 5</span>
-                                <span class="subtitle">Help Subtitle 5</span>
-                            </li>
-                            <li>
-                                <span class="title is-block">Help Title 6</span>
-                                <span class="subtitle">Help Subtitle 6</span>
-                            </li>
-                            <li>
-                                <span class="title is-block">Help Title 7</span>
-                                <span class="subtitle">Help Subtitle 7</span>
-                            </li>
-                            <li>
-                                <span class="title is-block">Help Title 8</span>
-                                <span class="subtitle">Help Subtitle 8</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <bvu-tab :tabs="tabs" :selected="selected" @tabSelected="tabSelected">
+                <bvu-tab-content slot="help" v-show="selected == 'help'">
+                    <template>
+                        <div class="columns">
+                            <div class="column service-header">Help Title 1</div>
+                            <div class="column is-one-third">
+                                <p class="control has-icons-left">
+                                    <input class="input is-small" type="text" placeholder="Search">
+                                    <span class="icon is-small is-left">
+                                        <i class="fa fa-search"></i>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div v-if="selectedHelp" class="column service-body has-scroll">
+                                <p v-for="content in selectedHelp.helpContents" :key="content">
+                                    {{content}}
+                                </p>
+                            </div>
+                            <div class="column is-one-third help-list has-scroll">
+                                <ul v-for="help in helps" :key="help.id" class="services">
+                                    <li>
+                                        <span class="title is-block">{{help.helpTitle}}</span>
+                                        <span class="subtitle">{{help.helpSubTitle}}</span>
+                                        <span v-if="help.selected" class="fa fa-check-circle"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </template>
+                </bvu-tab-content>
+            </bvu-tab>
         </div>
     </div>
 </template>
 
 <script>
+import tab from './../bulma/tab/tab.vue'
+import tabContent from './../bulma/tab/tab-content.vue'
 export default {
     components: {
+        'bvu-tab': tab,
+        'bvu-tab-content': tabContent
     },
     props: {
+        helps: {
+            type: Array
+        }
+    },
+    data () {
+        return {
+            tabs: [
+                { name: 'help', text: 'help', isActive: true, icon: 'fa fa-question-circle' },
+                { name: 'downloads', text: 'downloads', isActive: false, icon: 'fa fa-download' },
+                { name: 'reportproblem', text: 'report a problem', isActive: false, icon: 'fa fa-exclamation-triangle' },
+                { name: 'links', text: 'links', isActive: false, icon: 'fa fa-link' }
+            ],
+            selected: 'help'
+        }
+    },
+    computed: {
+        selectedHelp: function () {
+            if (this.helps && this.helps.length > 0) {
+                return this.helps.find(h => h.selected)
+            }
+            return null
+        }
+    },
+    methods: {
+        tabSelected: function (selected) {
+            this.selected = selected
+        }
     }
 }
 </script>
@@ -118,37 +97,14 @@ export default {
     min-width: 700px;
     margin: 10px 0px;
 
-    .tabs {
-        font-size: 0.75rem;
-        margin-bottom: 20px;
-
-        ul {
-            border-bottom-color: $ubuntu-imprint-color;
-        }
-        a {
-            color: $ubuntu-imprint-color;
-            border-bottom-color: $ubuntu-imprint-color;
-
-            &:hover {
-                color: $ubuntu-text-color;
-                border-bottom-color: $ubuntu-text-color;
-            }
-
-            .fa {
-                margin-right: 5px;
-            }
-        }
-
-        .is-active {
-            a {
-                color: $ubuntu-text-color;
-                border-bottom-color: $ubuntu-text-color;
-            }
-        }
-    }
-
     .column {
         padding: 0px;
+    }
+    .column:not(:last-child) {
+        border-right: 1px solid $ubuntu-imprint-color;
+        &:hover {
+          border-right: 1px solid transparent;
+        }
     }
 
     .service-header {
@@ -195,7 +151,7 @@ export default {
                 margin-bottom: 10px;
 
                 .title {
-                    font-size: 0.85rem;
+                    font-size: 0.75rem;
                     color: $ubuntu-text-color;
                     margin: 0px !important;
                     font-weight: normal;

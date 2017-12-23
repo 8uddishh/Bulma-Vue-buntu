@@ -101,7 +101,7 @@ export default {
     }
 
     .notif-container {
-      max-height: 350px;
+      max-height: 320px;
       overflow-y: hidden;
       position: relative;
 

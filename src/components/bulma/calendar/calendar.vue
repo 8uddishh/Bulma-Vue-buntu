@@ -57,7 +57,6 @@ export default {
         },
         compareDates: function (a, b) {
             // weak date comparison (use setToStartOfDay(date) to ensure correct result)
-            console.log(a.getTime(), b.getTime(), a.getTime() === b.getTime())
             return a.getTime() === b.getTime()
         },
         prevmonth: function () {

@@ -1,5 +1,5 @@
 <template>
-    <div class="popover-content">
+    <div class="container">
         <slot></slot>
     </div>
 </template>
@@ -7,6 +7,8 @@
 <script>
 export default {
     props: {
+    },
+    components: {
     },
     data () {
         return {
