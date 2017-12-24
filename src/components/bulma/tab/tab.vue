@@ -6,7 +6,7 @@
             </ul>
         </div>
         <slot v-for="tab in tabs" :name="tab.name">
-            <bvu-tab-content v-show="selected == tab.name">
+            <bvu-tab-content v-show="selectedTab == tab.name">
                 <template>
                     Tab content for {{tab.name}}
                 </template>
@@ -33,11 +33,12 @@ export default {
     },
     data () {
         return {
+            selectedTab: ''
         }
     },
     methods: {
         tabSelected: function (selected) {
-            this.selected = selected
+            this.selectedTab = selected
             this.tabs.filter(t => t.isActive)
                 .forEach(t => {
                     if (t.name !== selected) {
@@ -46,6 +47,9 @@ export default {
                 })
             this.$emit('tabSelected', selected)
         }
+    },
+    created () {
+        this.selectedTab = this.selected
     }
 }
 </script>
