@@ -22,7 +22,7 @@
           <bvu-popover :icon="'fa fa-university'" :icononly="true">
             <bvu-popover-content slot="popover-content">
               <template slot>
-                <app-services :helps="helps"></app-services> 
+                <app-services :helps="helps" :downloads="downloads"></app-services> 
               </template>
             </bvu-popover-content>
           </bvu-popover>
@@ -177,7 +177,8 @@ export default {
         ],
         languages: [],
         timezones: [],
-        helps: []
+        helps: [],
+        downloads: []
     }
   },
   created () {
@@ -195,6 +196,13 @@ export default {
           data[0].selected = true
         }
         this.helps = data
+      })
+    fbaxios.get('https://basic-bot-b6287.firebaseio.com/downloads.json')
+      .then(data => {
+        if (data && data.length > 0) {
+          data[0].selected = true
+        }
+        this.downloads = data
       })
   }
 }

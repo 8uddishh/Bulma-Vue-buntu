@@ -7,6 +7,11 @@
                         <app-helps-vue :helps="helps"></app-helps-vue>
                     </template>
                 </bvu-tab-content>
+                <bvu-tab-content slot="downloads" v-show="selected == 'downloads'">
+                    <template>
+                        <app-downloads-vue :downloads="downloads"></app-downloads-vue>
+                    </template>
+                </bvu-tab-content>
             </bvu-tab>
         </div>
     </div>
@@ -16,14 +21,19 @@
 import tab from './../bulma/tab/tab.vue'
 import tabContent from './../bulma/tab/tab-content.vue'
 import appHelpView from './../shared/app-helps-view.vue'
+import appDownloadView from './../shared/app-downloads-view.vue'
 export default {
     components: {
         'bvu-tab': tab,
         'bvu-tab-content': tabContent,
-        'app-helps-vue': appHelpView
+        'app-helps-vue': appHelpView,
+        'app-downloads-vue': appDownloadView
     },
     props: {
         helps: {
+            type: Array
+        },
+        downloads: {
             type: Array
         }
     },
@@ -39,12 +49,6 @@ export default {
         }
     },
     computed: {
-        selectedHelp: function () {
-            if (this.helps && this.helps.length > 0) {
-                return this.helps.find(h => h.selected)
-            }
-            return null
-        }
     },
     methods: {
         tabSelected: function (selected) {

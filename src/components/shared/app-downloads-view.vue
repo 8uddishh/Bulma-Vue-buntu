@@ -1,28 +1,39 @@
 <template>
     <div>
-        <div class="columns helpheader">
-            <div class="column service-header" v-if="selectedHelp">{{selectedHelp.helpTitle}}</div>
+        <div class="columns download-header">
+            <div class="column service-header" v-if="selectedDownload">
+                <p class="control has-icons-left">
+                    <input class="input is-small" type="text" :placeholder="'Search ' + selectedDownload.downloadTitle">
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-search"></i>
+                    </span>
+                </p>
+            </div>
             <div class="column is-one-third">
                 <p class="control has-icons-left">
-                    <input class="input is-small" type="text" placeholder="Search Helps">
+                    <input class="input is-small" type="text" placeholder="Search Downloads">
                     <span class="icon is-small is-left">
                         <i class="fa fa-search"></i>
                     </span>
                 </p>
             </div>
         </div>
-        <div class="columns helpbody">
-            <div v-if="selectedHelp" class="column service-body has-scroll">
-                <p v-for="content in selectedHelp.helpContents" :key="content">
-                    {{content}}
-                </p>
-            </div>
-            <div class="column is-one-third help-list has-scroll">
-                <ul v-for="help in helps" :key="help.id" class="services">
+        <div class="columns download-body">
+            <div v-if="selectedDownload" class="column service-body has-scroll">
+                <ul v-for="link in selectedDownload.downloadLinks" :key="link.downloadLink" class="services">
                     <li>
-                        <span class="title is-block">{{help.helpTitle}}</span>
-                        <span class="subtitle">{{help.helpSubTitle}}</span>
-                        <span v-if="help.selected" class="fa fa-check-circle"></span>
+                        <span class="title is-block">{{link.downloadText}}</span>
+                        <span class="subtitle">{{link.downloadInfo}}</span>
+                        <span class="tag is-success is-capitalized">{{link.language}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="column is-one-third download-list has-scroll">
+                <ul v-for="download in downloads" :key="download.id" class="services">
+                    <li>
+                        <span class="title is-block">{{download.downloadTitle}}</span>
+                        <span class="subtitle">{{download.downloadSubTitle}}</span>
+                        <span v-if="download.selected" class="fa fa-check-circle"></span>
                     </li>
                 </ul>
             </div>
@@ -39,7 +50,7 @@ export default {
         'bvu-tab-content': tabContent
     },
     props: {
-        helps: {
+        downloads: {
             type: Array
         }
     },
@@ -48,9 +59,9 @@ export default {
         }
     },
     computed: {
-        selectedHelp: function () {
-            if (this.helps && this.helps.length > 0) {
-                return this.helps.find(h => h.selected)
+        selectedDownload: function () {
+            if (this.downloads && this.downloads.length > 0) {
+                return this.downloads.find(d => d.selected)
             }
             return null
         }
@@ -67,8 +78,9 @@ export default {
     $ubuntu-text-color: #eaeaea;
     $ubuntu-imprint-color: #7a7a7a;
     $ubuntu-service-item-background: rgba(95,93,93, 0.8);
+    $ubuntu-subtext-color: #191818;
 
-    .helpheader {
+    .download-header {
         position: fixed;
         top: 68px;
         width: 100%;
@@ -79,11 +91,11 @@ export default {
         }
     }
 
-    .help-list {
+    .download-list {
         max-height: 280px;
     }
 
-    .helpbody {
+    .download-body {
         margin-top: 45px;
     }
 
@@ -135,8 +147,16 @@ export default {
 
                 .subtitle {
                     font-size: 0.65rem;
-                    color: #191818;
+                    color: $ubuntu-subtext-color;
                     font-weight: bold;
+                }
+
+                .tag {
+                    position: absolute;
+                    font-size: 0.65rem;
+                    top: 10px;
+                    right: 10px;
+                    color: $ubuntu-subtext-color;
                 }
 
                 .fa {
