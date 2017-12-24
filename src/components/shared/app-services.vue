@@ -12,6 +12,11 @@
                         <app-downloads-vue :downloads="downloads"></app-downloads-vue>
                     </template>
                 </bvu-tab-content>
+                <bvu-tab-content slot="reportproblem" v-show="selected == 'reportproblem'">
+                    <template>
+                        <app-report-vue :reportIssues="reportIssues"></app-report-vue>
+                    </template>
+                </bvu-tab-content>
             </bvu-tab>
         </div>
     </div>
@@ -22,18 +27,23 @@ import tab from './../bulma/tab/tab.vue'
 import tabContent from './../bulma/tab/tab-content.vue'
 import appHelpView from './../shared/app-helps-view.vue'
 import appDownloadView from './../shared/app-downloads-view.vue'
+import appReportIssues from './../shared/app-report-issue.vue'
 export default {
     components: {
         'bvu-tab': tab,
         'bvu-tab-content': tabContent,
         'app-helps-vue': appHelpView,
-        'app-downloads-vue': appDownloadView
+        'app-downloads-vue': appDownloadView,
+        'app-report-vue': appReportIssues
     },
     props: {
         helps: {
             type: Array
         },
         downloads: {
+            type: Array
+        },
+        reportIssues: {
             type: Array
         }
     },
