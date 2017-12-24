@@ -128,9 +128,6 @@ export default {
 
     .column:not(:last-child) {
         border-right: 1px solid $ubuntu-imprint-color;
-        &:hover {
-          border-right: 1px solid transparent;
-        }
     }
 
     .service-body {

@@ -28,7 +28,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="column is-one-third download-list has-scroll">
+            <div class="column is-one-third download-list">
                 <ul v-for="download in downloads" :key="download.id" class="services">
                     <li>
                         <span class="title is-block">{{download.downloadTitle}}</span>
@@ -108,7 +108,7 @@ export default {
 
     .service-body {
         font-size:0.75rem;
-        max-height: 280px;
+        max-height: 240px;
     }
     
     .container {
