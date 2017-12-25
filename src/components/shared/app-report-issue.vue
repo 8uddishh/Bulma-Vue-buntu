@@ -47,10 +47,10 @@
             </div>
             <div class="column is-one-third">
                 <ul class="services">
-                    <li v-for="issue in reportIssues" :key="issue.id" >
+                    <li v-for="issue in reportIssues" :key="issue.id" @click="selectIssue(issue.id)">
                         <span class="title is-block">{{issue.reportTitle}}</span>
                         <span class="subtitle">{{issue.reportSubTitle}}</span>
-                        <span v-if="issue.selected" class="fa fa-check-circle"></span>
+                        <span v-if="selectedIssue && selectedIssue.id === issue.id" class="fa fa-check-circle"></span>
                     </li>
                 </ul>
             </div>
@@ -59,37 +59,33 @@
 </template>
 
 <script>
-import tab from './../bulma/tab/tab.vue'
-import tabContent from './../bulma/tab/tab-content.vue'
+import fbaxios from './../../utilities/data-extensions'
 export default {
-    components: {
-        'bvu-tab': tab,
-        'bvu-tab-content': tabContent
-    },
-    props: {
-        reportIssues: {
-            type: Array
-        }
-    },
     data () {
         return {
+            reportIssues: [],
+            selectedIssue: null,
             issueInfo: {
                 issueType: 0
             }
         }
     },
-    computed: {
-        selectedIssue: function () {
-            if (this.reportIssues && this.reportIssues.length > 0) {
-                return this.reportIssues.find(r => r.selected)
-            }
-            return null
-        }
-    },
     methods: {
         tabSelected: function (selected) {
             this.selected = selected
+        },
+        selectIssue: function (id) {
+            this.selectedIssue = this.reportIssues.find(h => h.id === id)
         }
+    },
+    created () {
+        fbaxios.get('https://basic-bot-b6287.firebaseio.com/reportissues.json')
+            .then(data => {
+                this.reportIssues = data
+                if (this.reportIssues && this.reportIssues.length > 0) {
+                    this.selectedIssue = this.reportIssues[0]
+                }
+            })
     }
 }
 </script>
@@ -200,8 +196,6 @@ export default {
                     background-color: $ubuntu-cool-grey;
                 }
             }
-
-            
         }
 
     }
@@ -232,6 +226,7 @@ export default {
                 background-color: $ubuntu-service-item-background;
                 box-shadow: 0 1px 6px 0 rgba(0,0,0,.2),0 1px 6px 0 rgba(0,0,0,.19);
                 margin-bottom: 10px;
+                cursor:pointer;
 
                 .title {
                     font-size: 0.75rem;

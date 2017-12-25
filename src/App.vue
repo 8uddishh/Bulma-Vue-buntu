@@ -22,7 +22,7 @@
           <bvu-popover :icon="'fa fa-university'" :icononly="true">
             <bvu-popover-content slot="popover-content">
               <template slot>
-                <app-services :helps="helps" :downloads="downloads" :reportIssues="reportissues" :links="externallinks">
+                <app-services :links="externallinks">
                 </app-services> 
               </template>
             </bvu-popover-content>
@@ -192,27 +192,6 @@ export default {
     fbaxios.get('https://basic-bot-b6287.firebaseio.com/timezones.json')
       .then(data => {
         this.timezones = data
-      })
-    fbaxios.get('https://basic-bot-b6287.firebaseio.com/helps.json')
-      .then(data => {
-        if (data && data.length > 0) {
-          data[0].selected = true
-        }
-        this.helps = data
-      })
-    fbaxios.get('https://basic-bot-b6287.firebaseio.com/downloads.json')
-      .then(data => {
-        if (data && data.length > 0) {
-          data[0].selected = true
-        }
-        this.downloads = data
-      })
-    fbaxios.get('https://basic-bot-b6287.firebaseio.com/reportissues.json')
-      .then(data => {
-        if (data && data.length > 0) {
-          data[0].selected = true
-        }
-        this.reportissues = data
       })
     fbaxios.get('https://basic-bot-b6287.firebaseio.com/externallinks.json')
       .then(data => {

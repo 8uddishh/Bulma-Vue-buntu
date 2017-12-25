@@ -30,10 +30,10 @@
             </div>
             <div class="column is-one-third download-list">
                 <ul class="services">
-                    <li v-for="download in downloads" :key="download.id" >
+                    <li v-for="download in downloads" :key="download.id" @click="selectDownload(download.id)" >
                         <span class="title is-block">{{download.downloadTitle}}</span>
                         <span class="subtitle">{{download.downloadSubTitle}}</span>
-                        <span v-if="download.selected" class="fa fa-check-circle"></span>
+                        <span v-if="selectedDownload && selectedDownload.id === download.id" class="fa fa-check-circle"></span>
                     </li>
                 </ul>
             </div>
@@ -42,30 +42,30 @@
 </template>
 
 <script>
+import fbaxios from './../../utilities/data-extensions'
 export default {
-    components: {
-    },
-    props: {
-        downloads: {
-            type: Array
-        }
-    },
     data () {
         return {
-        }
-    },
-    computed: {
-        selectedDownload: function () {
-            if (this.downloads && this.downloads.length > 0) {
-                return this.downloads.find(d => d.selected)
-            }
-            return null
+            downloads: [],
+            selectedDownload: null
         }
     },
     methods: {
         tabSelected: function (selected) {
             this.selected = selected
+        },
+        selectDownload: function (id) {
+            this.selectedDownload = this.downloads.find(d => d.id === id)
         }
+    },
+    created () {
+        fbaxios.get('https://basic-bot-b6287.firebaseio.com/downloads.json')
+            .then(data => {
+                this.downloads = data
+                if (this.downloads && this.downloads.length > 0) {
+                    this.selectedDownload = this.downloads[0]
+                }
+            })
     }
 }
 </script>
@@ -133,6 +133,7 @@ export default {
                 background-color: $ubuntu-service-item-background;
                 box-shadow: 0 1px 6px 0 rgba(0,0,0,.2),0 1px 6px 0 rgba(0,0,0,.19);
                 margin-bottom: 10px;
+                cursor:pointer;
 
                 .title {
                     font-size: 0.75rem;

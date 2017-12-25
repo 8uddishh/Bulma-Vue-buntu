@@ -121,7 +121,7 @@ export default {
         }
 
         .languages-body  {
-            margin-top: 60px;
+            margin-top: 65px;
 
             .column {
                 height: 270px;

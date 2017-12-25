@@ -4,17 +4,17 @@
             <bvu-tab :tabs="tabs" :selected="selected" @tabSelected="tabSelected">
                 <bvu-tab-content slot="help" v-show="selected == 'help'">
                     <template>
-                        <app-helps-vue :helps="helps"></app-helps-vue>
+                        <app-helps-vue></app-helps-vue>
                     </template>
                 </bvu-tab-content>
                 <bvu-tab-content slot="downloads" v-show="selected == 'downloads'">
                     <template>
-                        <app-downloads-vue :downloads="downloads"></app-downloads-vue>
+                        <app-downloads-vue></app-downloads-vue>
                     </template>
                 </bvu-tab-content>
                 <bvu-tab-content slot="reportproblem" v-show="selected == 'reportproblem'">
                     <template>
-                        <app-report-vue :reportIssues="reportIssues"></app-report-vue>
+                        <app-report-vue></app-report-vue>
                     </template>
                 </bvu-tab-content>
                 <bvu-tab-content slot="links" v-show="selected == 'links'">
@@ -44,12 +44,6 @@ export default {
         'app-links-vue': appLinks
     },
     props: {
-        helps: {
-            type: Array
-        },
-        downloads: {
-            type: Array
-        },
         reportIssues: {
             type: Array
         },
