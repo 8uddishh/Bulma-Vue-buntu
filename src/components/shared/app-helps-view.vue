@@ -1,7 +1,9 @@
 <template>
     <div>
         <div class="columns helpheader">
-            <div class="column service-header" v-if="selectedHelp">{{selectedHelp.helpTitle}}</div>
+            <div class="column service-header" v-if="selectedHelp">
+                <span class="tag is-dark">{{selectedHelp.helpTitle}}</span>
+            </div>
             <div class="column is-one-third">
                 <p class="control has-icons-left">
                     <input class="input is-small" type="text" placeholder="Search Helps">

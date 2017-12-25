@@ -1,9 +1,16 @@
 <template>
-    <div class="languages-pop-over columns">
-        <div class="column">
-            <nav class="panel">
-                <p class="panel-heading is-uppercase"><i class="fa fa-globe"></i> languages</p>
-                <div class="panel-block">
+    <div class="languages-pop-over">
+        <div class="languages-header">
+            <div class="columns">
+                <div class="column">
+                    <span class="tag is-dark is-capitalized"><i class="fa fa-globe"></i> languages</span>
+                </div>
+                <div class="column">
+                    <span class="tag is-dark is-capitalized"><i class="fa fa-clock-o"></i> Timezones</span>
+                </div>
+            </div>
+            <div class="columns languages-search">
+                <div class="column">
                     <p class="control has-icons-left">
                         <input class="input is-small" type="text" placeholder="Search">
                         <span class="icon is-small is-left">
@@ -11,41 +18,39 @@
                         </span>
                     </p>
                 </div>
-                <div class="panel-block">
-                    <ul class="languages">
-                        <li v-for="language in languages" :key="language.id">
-                            <span class="title is-block">{{language.name}}</span>
-                            <span class="subtitle">{{language.nativeName}}</span>
-                            <span class="tag is-success is-capitalized" v-if="language.enabled">{{language.code}}</span>
-                            <span class="tag is-danger is-capitalized" v-else>{{language.code}}</span>
-                        </li>
-                    </ul>
+                <div class="column">
+                    <p class="control has-icons-left">
+                        <input class="input is-small" type="text" placeholder="Search">
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </p>
                 </div>
-            </nav>
+            </div>
         </div>
-        <div class="column">
-            <nav class="panel">
-                <p class="panel-heading is-uppercase"><i class="fa fa-clock-o"></i> Timezones</p>
-                <div class="panel-block">
-                    <p class="control has-icons-left">
-                        <input class="input is-small" type="text" placeholder="Search">
-                        <span class="icon is-small is-left">
-                            <i class="fa fa-search"></i>
-                        </span>
-                    </p>
-                </div>
-                <div class="panel-block">
-                    <ul class="languages">
-                        <li v-for="tz in timezones" :key="tz.id">
-                            <span class="title is-block">{{tz.value}}</span>
-                            <span class="subtitle">{{tz.text}}</span>
-                            <span class="tag is-success is-uppercase">{{tz.abbr}}</span>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+        <div class="languages-body columns">
+            <div class="column">
+                <ul class="languages">
+                    <li v-for="language in languages" :key="language.id">
+                        <span class="title is-block">{{language.name}}</span>
+                        <span class="subtitle">{{language.nativeName}}</span>
+                        <span class="tag is-success is-capitalized" v-if="language.enabled">{{language.code}}</span>
+                        <span class="tag is-danger is-capitalized" v-else>{{language.code}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="column">
+                <ul class="languages">
+                    <li v-for="tz in timezones" :key="tz.id">
+                        <span class="title is-block">{{tz.value}}</span>
+                        <span class="subtitle">{{tz.text}}</span>
+                        <span class="tag is-success is-uppercase">{{tz.abbr}}</span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
+    
 </template>
 
 <script>
@@ -64,106 +69,105 @@ export default {
     .languages-pop-over {
         min-width: 700px;
         margin: 0px;
+        position: relative;
+        padding: 10px;
 
-        .panel {
-            .panel-heading {
-                background-color: $ubuntu-imprint-color;
-                border: 1px solid $ubuntu-imprint-color;
-                font-size: 0.85rem;
-                font-weight: bold;
-                padding-top: 20px;
+        .languages-header {
+            position: fixed;
+            top: 20px;
+            left: 12px;
+            right: 12px;
 
-                .fa {
-                font-size: 1.2rem;
-                }
+            .columns {
+                left: 0px;
             }
 
-            .panel-block {
-                border: 1px solid $ubuntu-imprint-color;
+            .column {
+                font-size: 0.85rem;
+                font-weight: bold;
+                padding: 0px 12px;
+                &:first-of-type {
+                    padding-right: 0px;
+                }
+
                 input {
                     background-color: transparent;
-                    border-color: transparent;
+                    border-color: $ubuntu-imprint-color;
 
                     &::-webkit-input-placeholder {
                         color: $ubuntu-text-color;
                     }
                 }
-                &:first-of-type {
-                    padding: 0px;
-                    border-bottom: 1px solid transparent;
+                .fa {
+                    margin-right: 5px;
                 }
+            }
 
-                &:not(:first-of-type) {
-                    position: relative;
-                    height: 300px;
-                    overflow-y:hidden;
-                    padding: 10px 0px;
-                    border: 1px solid $ubuntu-imprint-color;
-                    &:hover {
-                        overflow-y: scroll;
-                    }
-                    &::-webkit-scrollbar-track
-                    {
-                        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-                        background-color: $ubuntu-imprint-color; // #F5F5F5;
-                    }
-                    &::-webkit-scrollbar
-                    {
-                        width: 8px;
-                        background-color: $ubuntu-imprint-color; // #F5F5F5;
-                    }
-                    &::-webkit-scrollbar-thumb
-                    {
-                        background-image: -webkit-gradient(linear, left bottom, left top, 
-                        color-stop(0.44, #9a9ca2), color-stop(0.72, #5f6165), color-stop(0.86, #5a606d));
-                    }
-                }
+            .languages-search {
+                padding-top: 5px;
             }
         }
 
-        .column {
-            padding: 0px;
-        }
+        .languages-body  {
+            margin-top: 55px;
 
-        .column:not(:last-child) {
-            margin-right: 10px;
-            border-right: 1px solid transparent;
-        }
-
-        .languages {
-            position:absolute; 
-            top: 10px;
-            padding: 0px 10px;
-            li {
-                padding: 5px 10px 2px 10px;
-                min-height: 30px;
-                max-width: 450px;
-                border: 1px solid $ubuntu-imprint-color;
-                border-radius: 5px;
-                position: relative;
-                background-color: $ubuntu-language-item-background;
-                margin-bottom: 10px;
-                box-shadow: 0 1px 6px 0 rgba(0,0,0,.2),0 1px 6px 0 rgba(0,0,0,.19);
-
-                .title {
-                    font-size: 0.75rem;
-                    color: $ubuntu-text-color;
-                    margin: 0px !important;
-                    font-weight: normal;
+            .column {
+                height: 270px;
+                overflow-y:hidden;
+                padding: 0px 0px 10px 0px;
+                &:hover {
+                    overflow-y: scroll;
+                }
+                &::-webkit-scrollbar-track
+                {
+                    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+                    background-color: $ubuntu-imprint-color; // #F5F5F5;
+                }
+                &::-webkit-scrollbar
+                {
+                    width: 8px;
+                    background-color: $ubuntu-imprint-color; // #F5F5F5;
+                }
+                &::-webkit-scrollbar-thumb
+                {
+                    background-image: -webkit-gradient(linear, left bottom, left top, 
+                    color-stop(0.44, #9a9ca2), color-stop(0.72, #5f6165), color-stop(0.86, #5a606d));
                 }
 
-                .subtitle {
-                    font-size: 0.65rem;
-                    color: #191818;
-                    font-weight: bold;
-                }
+                .languages {
+                    padding: 0px 10px;
+                    li {
+                        padding: 5px 10px 2px 10px;
+                        min-height: 30px;
+                        max-width: 450px;
+                        border: 1px solid $ubuntu-imprint-color;
+                        border-radius: 5px;
+                        position: relative;
+                        background-color: $ubuntu-language-item-background;
+                        margin-bottom: 10px;
+                        box-shadow: 0 1px 6px 0 rgba(0,0,0,.2),0 1px 6px 0 rgba(0,0,0,.19);
 
-                .tag {
-                    position: absolute;
-                    right: 10px;
-                    top: 10px;
-                    font-size: 0.65rem;
-                    font-weight: bold;
+                        .title {
+                            font-size: 0.75rem;
+                            color: $ubuntu-text-color;
+                            margin: 0px !important;
+                            font-weight: normal;
+                        }
+
+                        .subtitle {
+                            font-size: 0.65rem;
+                            color: #191818;
+                            font-weight: bold;
+                        }
+
+                        .tag {
+                            position: absolute;
+                            right: 10px;
+                            top: 10px;
+                            font-size: 0.65rem;
+                            font-weight: bold;
+                        }
+                    }
                 }
             }
         }

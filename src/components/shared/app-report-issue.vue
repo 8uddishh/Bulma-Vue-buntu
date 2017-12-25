@@ -2,7 +2,7 @@
     <div class="report-container">
         <div class="columns">
             <div class="column service-header" v-if="selectedIssue">
-                <span class="tag is-info">Report a {{selectedIssue.reportTitle}}</span>
+                <span class="tag is-dark">Report a {{selectedIssue.reportTitle}}</span>
             </div>
             <div class="column is-one-third">
                 <p class="control has-icons-left">
