@@ -1,18 +1,18 @@
 <template>
     <div class="languages-pop-over">
         <div class="languages-header">
-            <div class="columns">
-                <div class="column">
-                    <span class="tag is-dark is-capitalized"><i class="fa fa-globe"></i> languages</span>
+            <div class="columns languages-text">
+                <div class="column is-uppercase">
+                    <i class="fa fa-globe"></i> languages
                 </div>
-                <div class="column">
-                    <span class="tag is-dark is-capitalized"><i class="fa fa-clock-o"></i> Timezones</span>
+                <div class="column is-uppercase">
+                    <i class="fa fa-clock-o"></i> Timezones
                 </div>
             </div>
             <div class="columns languages-search">
                 <div class="column">
                     <p class="control has-icons-left">
-                        <input class="input is-small" type="text" placeholder="Search">
+                        <input class="input is-small" type="text" placeholder="Search Languages">
                         <span class="icon is-small is-left">
                             <i class="fa fa-search"></i>
                         </span>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="column">
                     <p class="control has-icons-left">
-                        <input class="input is-small" type="text" placeholder="Search">
+                        <input class="input is-small" type="text" placeholder="Search Timezones">
                         <span class="icon is-small is-left">
                             <i class="fa fa-search"></i>
                         </span>
@@ -106,10 +106,22 @@ export default {
             .languages-search {
                 padding-top: 5px;
             }
+
+            .languages-text {
+                padding-top: 10px;
+                color: $ubuntu-imprint-color;
+                .column {
+                    font-size: 0.75rem;
+
+                    .fa {
+                        font-size: 1.5rem;
+                    }
+                }
+            }
         }
 
         .languages-body  {
-            margin-top: 55px;
+            margin-top: 60px;
 
             .column {
                 height: 270px;
