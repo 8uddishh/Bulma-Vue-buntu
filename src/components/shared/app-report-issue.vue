@@ -2,7 +2,7 @@
     <div class="report-container">
         <div class="columns">
             <div class="column service-header" v-if="selectedIssue">
-                Report a {{selectedIssue.reportTitle}}
+                <span class="tag is-info">Report a {{selectedIssue.reportTitle}}</span>
             </div>
             <div class="column is-one-third">
                 <p class="control has-icons-left">
@@ -46,8 +46,8 @@
                 </form>
             </div>
             <div class="column is-one-third">
-                <ul v-for="issue in reportIssues" :key="issue.id" class="services">
-                    <li>
+                <ul class="services">
+                    <li v-for="issue in reportIssues" :key="issue.id" >
                         <span class="title is-block">{{issue.reportTitle}}</span>
                         <span class="subtitle">{{issue.reportSubTitle}}</span>
                         <span v-if="issue.selected" class="fa fa-check-circle"></span>

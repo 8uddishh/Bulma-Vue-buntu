@@ -17,6 +17,11 @@
                         <app-report-vue :reportIssues="reportIssues"></app-report-vue>
                     </template>
                 </bvu-tab-content>
+                <bvu-tab-content slot="links" v-show="selected == 'links'">
+                    <template>
+                        <app-links-vue :links="links"></app-links-vue>
+                    </template>
+                </bvu-tab-content>
             </bvu-tab>
         </div>
     </div>
@@ -28,13 +33,15 @@ import tabContent from './../bulma/tab/tab-content.vue'
 import appHelpView from './../shared/app-helps-view.vue'
 import appDownloadView from './../shared/app-downloads-view.vue'
 import appReportIssues from './../shared/app-report-issue.vue'
+import appLinks from './../shared/app-links-view.vue'
 export default {
     components: {
         'bvu-tab': tab,
         'bvu-tab-content': tabContent,
         'app-helps-vue': appHelpView,
         'app-downloads-vue': appDownloadView,
-        'app-report-vue': appReportIssues
+        'app-report-vue': appReportIssues,
+        'app-links-vue': appLinks
     },
     props: {
         helps: {
@@ -44,6 +51,9 @@ export default {
             type: Array
         },
         reportIssues: {
+            type: Array
+        },
+        links: {
             type: Array
         }
     },

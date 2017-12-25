@@ -20,8 +20,8 @@
         </div>
         <div class="columns download-body">
             <div v-if="selectedDownload" class="column service-body has-scroll">
-                <ul v-for="link in selectedDownload.downloadLinks" :key="link.downloadLink" class="services">
-                    <li>
+                <ul class="services">
+                    <li v-for="link in selectedDownload.downloadLinks" :key="link.downloadLink" >
                         <span class="title is-block">{{link.downloadText}}</span>
                         <span class="subtitle">{{link.downloadInfo}}</span>
                         <span class="tag is-success is-capitalized">{{link.language}}</span>
@@ -29,8 +29,8 @@
                 </ul>
             </div>
             <div class="column is-one-third download-list">
-                <ul v-for="download in downloads" :key="download.id" class="services">
-                    <li>
+                <ul class="services">
+                    <li v-for="download in downloads" :key="download.id" >
                         <span class="title is-block">{{download.downloadTitle}}</span>
                         <span class="subtitle">{{download.downloadSubTitle}}</span>
                         <span v-if="download.selected" class="fa fa-check-circle"></span>
@@ -42,12 +42,8 @@
 </template>
 
 <script>
-import tab from './../bulma/tab/tab.vue'
-import tabContent from './../bulma/tab/tab-content.vue'
 export default {
     components: {
-        'bvu-tab': tab,
-        'bvu-tab-content': tabContent
     },
     props: {
         downloads: {

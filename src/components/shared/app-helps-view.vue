@@ -18,8 +18,8 @@
                 </p>
             </div>
             <div class="column is-one-third help-list has-scroll">
-                <ul v-for="help in helps" :key="help.id" class="services">
-                    <li>
+                <ul class="services">
+                    <li v-for="help in helps" :key="help.id">
                         <span class="title is-block">{{help.helpTitle}}</span>
                         <span class="subtitle">{{help.helpSubTitle}}</span>
                         <span v-if="help.selected" class="fa fa-check-circle"></span>
