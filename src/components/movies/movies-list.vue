@@ -44,6 +44,12 @@
                     </label>
                 </div>
             </div>
+            <div class="field">
+                <div class="control">
+                    <bvu-select :collection="testList" :placeholder="'Select an option'" :textField="'name'" :keyField="'id'">
+                    </bvu-select>
+                </div>
+            </div>
             <div class="field is-grouped is-search-action">
                 <div class="control is-pulled-right">
                     <button class="button is-link">Search</button>
@@ -62,13 +68,17 @@ import appSimpleGrid from './../shared/app-simple-grid.vue'
 import bvuTable from './../bulma/table/table.vue'
 import bvuTableRow from './../bulma/table/table-row.vue'
 import bvuTableCell from './../bulma/table/table-cell.vue'
+import bvuSelect from './../bulma/select/select.vue'
+import bvuSelectItem from './../bulma/select/select-item.vue'
 
 export default {
     components: {
         'app-simple-grid': appSimpleGrid,
         'bvu-table': bvuTable,
         'bvu-table-row': bvuTableRow,
-        'bvu-table-cell': bvuTableCell
+        'bvu-table-cell': bvuTableCell,
+        'bvu-select': bvuSelect,
+        'bvu-select-item': bvuSelectItem
     },
     data () {
         return {
@@ -80,6 +90,14 @@ export default {
                 { id: 3, name: 'Get Out', year: 2017, qtyAvailable: 10, cost: 15.99 },
                 { id: 4, name: 'The Third Man', year: 1949, qtyAvailable: 8, cost: 8.66 },
                 { id: 5, name: 'Mad Max: Fury Road', year: 2015, qtyAvailable: 15, cost: 15.99 }
+            ],
+            testList: [
+                { id: 1, name: 'Test list #1', desc: 'Test list #1' },
+                { id: 2, name: 'Test list #2', desc: 'Test list #2' },
+                { id: 3, name: 'Test list #3', desc: 'Test list #3' },
+                { id: 4, name: 'Test list #4', desc: 'Test list #4' },
+                { id: 5, name: 'Test list #5', desc: 'Test list #5' },
+                { id: 6, name: 'Test list #6', desc: 'Test list #6' }
             ]
         }
     }
