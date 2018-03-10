@@ -26,12 +26,10 @@
             </div>
             <div class="field">
                 <div class="control">
-                    <div class="select">
-                        <select>
-                            <option>Select genre</option>
-                            <option>With options</option>
-                        </select>
-                    </div>
+                    <bvu-select :collection="genres" :selected="selectedGenre"
+                        :placeholder="'Select a genre'" :textField="'name'" :keyField="'id'"
+                        @itemSelected="onItemSelected">
+                    </bvu-select>
                 </div>
             </div>
             <div class="field">
@@ -42,12 +40,6 @@
                     <label class="radio">
                         <input type="radio" name="question"> Blu-ray
                     </label>
-                </div>
-            </div>
-            <div class="field">
-                <div class="control">
-                    <bvu-select :collection="testList" :placeholder="'Select an option'" :textField="'name'" :keyField="'id'">
-                    </bvu-select>
                 </div>
             </div>
             <div class="field is-grouped is-search-action">
@@ -91,14 +83,22 @@ export default {
                 { id: 4, name: 'The Third Man', year: 1949, qtyAvailable: 8, cost: 8.66 },
                 { id: 5, name: 'Mad Max: Fury Road', year: 2015, qtyAvailable: 15, cost: 15.99 }
             ],
-            testList: [
-                { id: 1, name: 'Test list #1', desc: 'Test list #1' },
-                { id: 2, name: 'Test list #2', desc: 'Test list #2' },
-                { id: 3, name: 'Test list #3', desc: 'Test list #3' },
-                { id: 4, name: 'Test list #4', desc: 'Test list #4' },
-                { id: 5, name: 'Test list #5', desc: 'Test list #5' },
-                { id: 6, name: 'Test list #6', desc: 'Test list #6' }
-            ]
+            genres: [
+                { id: 1, name: 'Genre #1', desc: 'Test list #1' },
+                { id: 2, name: 'Genre #2', desc: 'Test list #2' },
+                { id: 3, name: 'Genre #3', desc: 'Test list #3' },
+                { id: 4, name: 'Genre #4', desc: 'Test list #4' },
+                { id: 5, name: 'Genre #5', desc: 'Test list #5' },
+                { id: 6, name: 'Genre #6', desc: 'Test list #6' }
+            ],
+            selectedGenre: {
+                id: 0
+            }
+        }
+    },
+    methods: {
+        onItemSelected: function (item) {
+            this.selectedGenre = item || { id: 0 }
         }
     }
 }
