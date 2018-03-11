@@ -22,6 +22,16 @@
                             </slot>
                         </div>
                         <div class="column control-panel">
+                            <form>
+                                <div class="field">
+                                    <div class="control">
+                                        <bvu-select :collection="sorts" :selected="selectedSort"
+                                            :placeholder="'Sort By'" :textField="sortTextField" :keyField="sortKeyField"
+                                            @itemSelected="onSortSelected">
+                                        </bvu-select>
+                                    </div>
+                                </div>
+                            </form>
                             <slot name="grid-control-panel">
                             </slot>
                             <hr>
@@ -43,13 +53,27 @@
 </template>
 
 <script>
-
+import bvuSelect from './../bulma/select/select.vue'
+import bvuSelectItem from './../bulma/select/select-item.vue'
 export default {
+    components: {
+        'bvu-select': bvuSelect,
+        'bvu-select-item': bvuSelectItem
+    },
+    props: {
+        sorts: Array,
+        selectedSort: Object,
+        sortTextField: String,
+        sortKeyField: String
+    },
     data () {
         return {
         }
     },
     methods: {
+        onSortSelected: function (sort) {
+            this.$emit('onSortSelected', sort)
+        }
     }
 }
 </script>

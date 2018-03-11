@@ -1,5 +1,6 @@
 <template>
-    <app-simple-grid>
+    <app-simple-grid :sorts="sorts" :selectedSort="selectedSort" :sortKeyField="'id'" :sortTextField="'name'" 
+            @onSortSelected="onSortSelected">
         <h3 slot="grid-title">Movies</h3>
         <bvu-table slot="grid-table" v-bind:headers="headers">
             <bvu-table-row slot="body" v-for="movie in movies" v-bind:key="movie['id']" v-bind:rowdata="movie">
@@ -28,7 +29,7 @@
                 <div class="control">
                     <bvu-select :collection="genres" :selected="selectedGenre"
                         :placeholder="'Select a genre'" :textField="'name'" :keyField="'id'"
-                        @itemSelected="onItemSelected">
+                        @itemSelected="onGenreSelected">
                     </bvu-select>
                 </div>
             </div>
@@ -91,14 +92,30 @@ export default {
                 { id: 5, name: 'Genre #5', desc: 'Test list #5' },
                 { id: 6, name: 'Genre #6', desc: 'Test list #6' }
             ],
+            sorts: [
+                { id: 1, name: 'Id: Ascending' },
+                { id: 2, name: 'Id: Descending' },
+                { id: 3, name: 'Name: A-Z' },
+                { id: 4, name: 'Name: Z-A' },
+                { id: 5, name: 'Year: Newer to Older' },
+                { id: 6, name: 'Year: Older to Newer' },
+                { id: 7, name: 'Cost: Low to High' },
+                { id: 8, name: 'Cost: High to Low' }
+            ],
             selectedGenre: {
+                id: 0
+            },
+            selectedSort: {
                 id: 0
             }
         }
     },
     methods: {
-        onItemSelected: function (item) {
+        onGenreSelected: function (item) {
             this.selectedGenre = item || { id: 0 }
+        },
+        onSortSelected: function (sort) {
+
         }
     }
 }
