@@ -37,11 +37,15 @@
                             <hr>
                             <nav class="pagination is-small" role="navigation" aria-label="pagination">
                                 <ul class="pagination-list">
+                                    <li><a class="pagination-link" aria-label="Goto page 1"><i class="fa fa-angle-double-left"></i></a></li>
+                                    <li><a class="pagination-link" aria-label="Goto page 1"><i class="fa fa-angle-left"></i></a></li>
                                     <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
                                     <li><a class="pagination-link" aria-label="Goto page 45">2</a></li>
                                     <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">3</a></li>
                                     <li><a class="pagination-link" aria-label="Goto page 47">4</a></li>
                                     <li><a class="pagination-link" aria-label="Goto page 86">5</a></li>
+                                    <li><a class="pagination-link" aria-label="Goto page 1"><i class="fa fa-angle-right"></i></a></li>
+                                    <li><a class="pagination-link" aria-label="Goto page 1"><i class="fa fa-angle-double-right"></i></a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -86,6 +90,7 @@ export default {
     $ubuntu-white: #FEFEFF;
     $ubuntu-light-border: #ccccc7;
     $ubuntu-text-color: #363636;
+    $overlay-fore-color: #dacbd9;
 
     $white: #fff;
 
@@ -244,6 +249,33 @@ export default {
                                 margin-left: 0px;
                                 list-style-type: none;
                                 justify-content: space-evenly;
+
+                                li {
+                                    margin: 0px;
+
+                                    a {
+                                        padding: 2px;
+                                        height: 22px;
+                                        width: 8px;
+                                        font-size: 0.60rem;
+                                        border-radius: 50%;
+                                        color: $ubuntu-text-color;
+                                        border: 1px solid $ubuntu-light-border;
+                                        background-color: #f9faf9;
+
+                                        &:hover {
+                                            background-color: $ubuntu-orange;
+                                            border: 1px solid $ubuntu-orange;
+                                            color: $ubuntu-white;
+                                        }
+                    
+                                        &.is-current {
+                                            background-color: $ubuntu-orange;
+                                            border: 1px solid $ubuntu-orange;
+                                            color: $ubuntu-white;
+                                        }
+                                    }
+                                }
                             }
                         }
                         

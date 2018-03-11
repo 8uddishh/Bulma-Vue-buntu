@@ -82,7 +82,17 @@ export default {
                 { id: 2, name: 'Citizen Kane', year: 1941, qtyAvailable: 5, cost: 10 },
                 { id: 3, name: 'Get Out', year: 2017, qtyAvailable: 10, cost: 15.99 },
                 { id: 4, name: 'The Third Man', year: 1949, qtyAvailable: 8, cost: 8.66 },
-                { id: 5, name: 'Mad Max: Fury Road', year: 2015, qtyAvailable: 15, cost: 15.99 }
+                { id: 5, name: 'Mad Max: Fury Road', year: 2015, qtyAvailable: 15, cost: 15.99 },
+                { id: 6, name: 'The Wizard of Oz', year: 1939, qtyAvailable: 3, cost: 10 },
+                { id: 7, name: 'Citizen Kane', year: 1941, qtyAvailable: 5, cost: 10 },
+                { id: 8, name: 'Get Out', year: 2017, qtyAvailable: 10, cost: 15.99 },
+                { id: 9, name: 'The Third Man', year: 1949, qtyAvailable: 8, cost: 8.66 },
+                { id: 10, name: 'Mad Max: Fury Road', year: 2015, qtyAvailable: 15, cost: 15.99 },
+                { id: 11, name: 'The Wizard of Oz', year: 1939, qtyAvailable: 3, cost: 10 },
+                { id: 12, name: 'Citizen Kane', year: 1941, qtyAvailable: 5, cost: 10 },
+                { id: 13, name: 'Get Out', year: 2017, qtyAvailable: 10, cost: 15.99 },
+                { id: 14, name: 'The Third Man', year: 1949, qtyAvailable: 8, cost: 8.66 },
+                { id: 15, name: 'Mad Max: Fury Road', year: 2015, qtyAvailable: 15, cost: 15.99 }
             ],
             genres: [
                 { id: 1, name: 'Genre #1', desc: 'Test list #1' },
