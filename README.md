@@ -4,11 +4,11 @@
 
 
 ## Screenshots
-![alt tag](https://github.com/8uddishh/Bulma-Vue-buntu/screenshots/ss1.png "Description goes here")
+![alt tag](https://github.com/8uddishh/Bulma-Vue-buntu/blob/master/screenshots/SS1.PNG "Description goes here")
 
-![alt tag](https://github.com/8uddishh/Bulma-Vue-buntu/screenshots/ss1.png "Description goes here")
+![alt tag](https://github.com/8uddishh/Bulma-Vue-buntu/blob/master/screenshots/SS2.PNG "Description goes here")
 
-![alt tag](https://github.com/8uddishh/Bulma-Vue-buntu/screenshots/ss3.png "Description goes here")
+![alt tag](https://github.com/8uddishh/Bulma-Vue-buntu/blob/master/screenshots/SS3.PNG "Description goes here")
 
 ## Test Url
 [Firebase App Url](https://basic-bot-b6287.firebaseapp.com)
