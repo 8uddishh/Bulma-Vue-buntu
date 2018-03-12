@@ -3,7 +3,7 @@
         <span class="caret">▼</span>
         <input type="text" class="select-dropdown" readonly="true" :value="selectedText || placeholder" @click="openMenu(this)">
         <ul class="dropdown-content select-dropdown" :class="{ 'is-active' : isOpen }" :style="{ width: dropDowmnWidth + 'px'}">
-            <slot name="default-option">
+            <slot name="default-option" v-if="showDefault">
                 <li class="disabled" @click="clearSelect"><span>{{placeholder}}</span></li>
             </slot>
             <slot v-for="entry in collection" :name="`select-item-${entry[keyField]}`">
@@ -39,7 +39,8 @@ export default {
         placeholder: {
             type: String
         },
-        selected: Object
+        selected: Object,
+        showDefault: Boolean
     },
     components: {
         'bvu-select-item': selectItem

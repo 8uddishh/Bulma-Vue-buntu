@@ -27,7 +27,7 @@
             </div>
             <div class="field">
                 <div class="control">
-                    <bvu-select :collection="genres" :selected="selectedGenre"
+                    <bvu-select :showDefault="true" :collection="genres" :selected="selectedGenre"
                         :placeholder="'Select a genre'" :textField="'name'" :keyField="'id'"
                         @itemSelected="onGenreSelected">
                     </bvu-select>
