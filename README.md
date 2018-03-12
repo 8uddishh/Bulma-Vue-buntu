@@ -2,6 +2,17 @@
 
 > A Vue.js project, which would mimic a ubuntu desktop, using Bulma css
 
+
+## Screenshots
+![alt tag](https://github.com/8uddishh/Bulma-Vue-buntu/screenshots/ss1.png "Description goes here")
+
+![alt tag](https://github.com/8uddishh/Bulma-Vue-buntu/screenshots/ss1.png "Description goes here")
+
+![alt tag](https://github.com/8uddishh/Bulma-Vue-buntu/screenshots/ss3.png "Description goes here")
+
+## Test Url
+[Firebase App Url](https://basic-bot-b6287.firebaseapp.com)
+
 ## Build Setup
 
 ``` bash
@@ -13,9 +24,6 @@ npm run dev
 
 # build for production with minification
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
