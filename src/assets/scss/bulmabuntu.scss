@@ -13,7 +13,7 @@ $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome.scss";
 @import "calendar.sass";
 
-$background-image: '~/src/assets/ubuntu-original-2016-hd-3840x2160.jpg';
+$background-image: '../ubuntu-original-2016-hd-3840x2160.jpg';
 
 body {
     font-family: 'Ubuntu', sans-serif !important;
