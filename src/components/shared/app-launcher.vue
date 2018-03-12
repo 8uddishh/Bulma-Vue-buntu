@@ -77,7 +77,7 @@ export default {
     $ubuntu-orange: #E95420;
 
     .app-launcher-panel {
-        position: absolute;
+        position: fixed;
         background-image: url($launcher-background-image);
         -webkit-background-size: cover;
         -moz-background-size: cover;
@@ -101,7 +101,12 @@ export default {
         &.close {
             top: -2000px;
             left: -2000px;
-            height: 0;
+            height: 0px;
+
+            .container {
+                height: 0px;
+                width: 0px;
+            }
         }
 
         .container {

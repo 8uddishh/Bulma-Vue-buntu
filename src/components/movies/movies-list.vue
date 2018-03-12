@@ -1,5 +1,6 @@
 <template>
-    <app-simple-grid>
+    <app-simple-grid :sorts="sorts" :selectedSort="selectedSort" :sortKeyField="'id'" :sortTextField="'name'" 
+            @onSortSelected="onSortSelected">
         <h3 slot="grid-title">Movies</h3>
         <bvu-table slot="grid-table" v-bind:headers="headers">
             <bvu-table-row slot="body" v-for="movie in movies" v-bind:key="movie['id']" v-bind:rowdata="movie">
@@ -26,12 +27,10 @@
             </div>
             <div class="field">
                 <div class="control">
-                    <div class="select">
-                        <select>
-                            <option>Select genre</option>
-                            <option>With options</option>
-                        </select>
-                    </div>
+                    <bvu-select :showDefault="true" :collection="genres" :selected="selectedGenre"
+                        :placeholder="'Select a genre'" :textField="'name'" :keyField="'id'"
+                        @itemSelected="onGenreSelected">
+                    </bvu-select>
                 </div>
             </div>
             <div class="field">
@@ -42,12 +41,6 @@
                     <label class="radio">
                         <input type="radio" name="question"> Blu-ray
                     </label>
-                </div>
-            </div>
-            <div class="field">
-                <div class="control">
-                    <bvu-select :collection="testList" :placeholder="'Select an option'" :textField="'name'" :keyField="'id'">
-                    </bvu-select>
                 </div>
             </div>
             <div class="field is-grouped is-search-action">
@@ -89,16 +82,50 @@ export default {
                 { id: 2, name: 'Citizen Kane', year: 1941, qtyAvailable: 5, cost: 10 },
                 { id: 3, name: 'Get Out', year: 2017, qtyAvailable: 10, cost: 15.99 },
                 { id: 4, name: 'The Third Man', year: 1949, qtyAvailable: 8, cost: 8.66 },
-                { id: 5, name: 'Mad Max: Fury Road', year: 2015, qtyAvailable: 15, cost: 15.99 }
+                { id: 5, name: 'Mad Max: Fury Road', year: 2015, qtyAvailable: 15, cost: 15.99 },
+                { id: 6, name: 'The Wizard of Oz', year: 1939, qtyAvailable: 3, cost: 10 },
+                { id: 7, name: 'Citizen Kane', year: 1941, qtyAvailable: 5, cost: 10 },
+                { id: 8, name: 'Get Out', year: 2017, qtyAvailable: 10, cost: 15.99 },
+                { id: 9, name: 'The Third Man', year: 1949, qtyAvailable: 8, cost: 8.66 },
+                { id: 10, name: 'Mad Max: Fury Road', year: 2015, qtyAvailable: 15, cost: 15.99 },
+                { id: 11, name: 'The Wizard of Oz', year: 1939, qtyAvailable: 3, cost: 10 },
+                { id: 12, name: 'Citizen Kane', year: 1941, qtyAvailable: 5, cost: 10 },
+                { id: 13, name: 'Get Out', year: 2017, qtyAvailable: 10, cost: 15.99 },
+                { id: 14, name: 'The Third Man', year: 1949, qtyAvailable: 8, cost: 8.66 },
+                { id: 15, name: 'Mad Max: Fury Road', year: 2015, qtyAvailable: 15, cost: 15.99 }
             ],
-            testList: [
-                { id: 1, name: 'Test list #1', desc: 'Test list #1' },
-                { id: 2, name: 'Test list #2', desc: 'Test list #2' },
-                { id: 3, name: 'Test list #3', desc: 'Test list #3' },
-                { id: 4, name: 'Test list #4', desc: 'Test list #4' },
-                { id: 5, name: 'Test list #5', desc: 'Test list #5' },
-                { id: 6, name: 'Test list #6', desc: 'Test list #6' }
-            ]
+            genres: [
+                { id: 1, name: 'Genre #1', desc: 'Test list #1' },
+                { id: 2, name: 'Genre #2', desc: 'Test list #2' },
+                { id: 3, name: 'Genre #3', desc: 'Test list #3' },
+                { id: 4, name: 'Genre #4', desc: 'Test list #4' },
+                { id: 5, name: 'Genre #5', desc: 'Test list #5' },
+                { id: 6, name: 'Genre #6', desc: 'Test list #6' }
+            ],
+            sorts: [
+                { id: 1, name: 'Id: Ascending' },
+                { id: 2, name: 'Id: Descending' },
+                { id: 3, name: 'Name: A-Z' },
+                { id: 4, name: 'Name: Z-A' },
+                { id: 5, name: 'Year: Newer to Older' },
+                { id: 6, name: 'Year: Older to Newer' },
+                { id: 7, name: 'Cost: Low to High' },
+                { id: 8, name: 'Cost: High to Low' }
+            ],
+            selectedGenre: {
+                id: 0
+            },
+            selectedSort: {
+                id: 0
+            }
+        }
+    },
+    methods: {
+        onGenreSelected: function (item) {
+            this.selectedGenre = item || { id: 0 }
+        },
+        onSortSelected: function (sort) {
+
         }
     }
 }

@@ -22,18 +22,23 @@
                             </slot>
                         </div>
                         <div class="column control-panel">
+                            <form>
+                                <div class="field">
+                                    <div class="control">
+                                        <bvu-select :showDefault="true" :collection="sorts" :selected="selectedSort"
+                                            :placeholder="'Sort By'" :textField="sortTextField" :keyField="sortKeyField"
+                                            @itemSelected="onSortSelected">
+                                        </bvu-select>
+                                    </div>
+                                </div>
+                            </form>
                             <slot name="grid-control-panel">
                             </slot>
                             <hr>
-                            <nav class="pagination is-small" role="navigation" aria-label="pagination">
-                                <ul class="pagination-list">
-                                    <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
-                                    <li><a class="pagination-link" aria-label="Goto page 45">2</a></li>
-                                    <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">3</a></li>
-                                    <li><a class="pagination-link" aria-label="Goto page 47">4</a></li>
-                                    <li><a class="pagination-link" aria-label="Goto page 86">5</a></li>
-                                </ul>
-                            </nav>
+                            <bvu-paginate :pages="pages" :selectedPage="selectedPage"
+                                :pagesizes="pagesizes" :selectedPageSize="selectedPageSize" 
+                                @onPageSelected="onPageSelected" @onPageSizeSelected="onPageSizeSelected">
+                            </bvu-paginate>
                         </div>
                     </div>
                 </div>
@@ -43,13 +48,49 @@
 </template>
 
 <script>
-
+import bvuSelect from './../bulma/select/select.vue'
+import bvuSelectItem from './../bulma/select/select-item.vue'
+import bvuPaginate from './../bulma/paginate/paginate.vue'
 export default {
+    components: {
+        'bvu-select': bvuSelect,
+        'bvu-select-item': bvuSelectItem,
+        'bvu-paginate': bvuPaginate
+    },
+    props: {
+        sorts: Array,
+        selectedSort: Object,
+        sortTextField: String,
+        sortKeyField: String
+    },
     data () {
         return {
+            pagesizes: [
+                { pageValue: 1, pageText: '1' },
+                { pageValue: 10, pageText: '10' },
+                { pageValue: 25, pageText: '25' },
+                { pageValue: 50, pageText: '50' },
+                { pageValue: 100, pageText: '100' },
+                { pageValue: 250, pageText: '250' },
+                { pageValue: 500, pageText: '500' },
+                { pageValue: -1, pageText: 'All' }
+            ],
+            selectedPageSize: { pageValue: 25, pageText: '25' },
+            pages: [ '1', '2', '3', '4', '5' ],
+            selectedPage: '3'
         }
     },
     methods: {
+        onSortSelected: function (sort) {
+            this.$emit('onSortSelected', sort)
+        },
+        onPageSizeSelected: function (sort) {
+            this.$emit('onPageSizeSelected', sort)
+        },
+        onPageSelected: function (page) {
+            this.selectedPage = page
+            console.log(page)
+        }
     }
 }
 </script>
@@ -62,6 +103,7 @@ export default {
     $ubuntu-white: #FEFEFF;
     $ubuntu-light-border: #ccccc7;
     $ubuntu-text-color: #363636;
+    $overlay-fore-color: #dacbd9;
 
     $white: #fff;
 
@@ -213,16 +255,7 @@ export default {
                                     font-size: 0.85rem;
                                 }
                             }
-                        }
-
-                        .pagination {
-                            .pagination-list {
-                                margin-left: 0px;
-                                list-style-type: none;
-                                justify-content: space-evenly;
-                            }
-                        }
-                        
+                        }                      
                     }
                 }
             }
